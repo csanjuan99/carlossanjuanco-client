@@ -1,0 +1,79 @@
+{
+  "hero": {
+    "eyebrow": "Your Name — Senior FullStack Engineer · MMXXVI",
+    "titleBefore": "Code as an",
+    "titleEmphasis": "act of creation",
+    "subtitle": "Ten years sculpting systems that scale — from architecture's first stroke to the interface's last detail.",
+    "scrollHint": "SCROLL · THE VAULT CONTINUES ↓"
+  },
+  "manifesto": {
+    "label": "MANIFESTO · INSCRIPTION No. 1",
+    "quote": "I believe good software is built the way a vault was once painted: with craft, patience, and an obsession for the details no one sees up close — but everyone feels. Write your two- or three-line bio here.",
+    "technique": "TECHNIQUE — DISTRIBUTED SYSTEMS · OIL ON PRODUCTION"
+  },
+  "stack": {
+    "label": "GALLERY II · PANTHEON OF TOOLS",
+    "title": "The tools of the craft"
+  },
+  "obras": {
+    "label": "GALLERY III · CATALOGUE OF WORKS",
+    "title": "Featured works",
+    "technique": "TECHNIQUE",
+    "role": "ROLE",
+    "year": "YEAR",
+    "result": "RESULT",
+    "cta": "VIEW THE WORK →",
+    "imagePlaceholder": "Project screenshot / mockup — drop your image here",
+    "plateLabel": "WORK No. {{numeral}} · {{year}}",
+    "items": {
+      "obra1": {
+        "title": "Project Name One",
+        "desc": "Brief project description: what problem it solved, for whom, and what makes it notable. Two or three sentences.",
+        "role": "Full-stack architecture and development",
+        "result": "Key measurable result (e.g. +40% conversion)"
+      },
+      "obra2": {
+        "title": "Project Name Two",
+        "desc": "Brief project description: context, main technical challenge, and your concrete contribution.",
+        "role": "Tech lead",
+        "result": "Key measurable result"
+      },
+      "obra3": {
+        "title": "Project Name Three",
+        "desc": "Brief project description: scale, constraints, and a design decision you're proud of.",
+        "role": "Senior engineer",
+        "result": "Key measurable result"
+      }
+    }
+  },
+  "frieze": {
+    "label": "GALLERY IV · CHRONOLOGICAL FRIEZE",
+    "title": "Experience",
+    "items": {
+      "job1": { "years": "2022 — NOW", "company": "Current Company", "role": "Senior FullStack Engineer", "feat": "Key achievement: what you built, at what scale, and the impact on the business or team." },
+      "job2": { "years": "2019 — 2022", "company": "Previous Company", "role": "FullStack Engineer", "feat": "Key achievement from this stage: system, migration, or product you led." },
+      "job3": { "years": "2017 — 2019", "company": "Another Company", "role": "Software Engineer", "feat": "Key achievement: first architecture or mentoring responsibilities." },
+      "job4": { "years": "2015 — 2017", "company": "First Company", "role": "Junior Developer", "feat": "Where it all started: first product shipped to production." }
+    }
+  },
+  "testimonials": {
+    "label": "GALLERY V · COMMEMORATIVE PLAQUES",
+    "title": "What people say about my work",
+    "items": {
+      "t1": { "quote": "Recommendation quote: two sentences on what it's like to work with you and the impact you had.", "author": "Name — Title, Company" },
+      "t2": { "quote": "Second quote: another voice, ideally a founder or manager, on a concrete result.", "author": "Name — Title, Company" }
+    }
+  },
+  "contact": {
+    "label": "EPILOGUE · THE LIGHT ENTERS THROUGH THE DOME",
+    "title": "Let's build the next great work together",
+    "subtitle": "Available for ambitious projects, demanding teams, and problems that deserve their own vault.",
+    "cta": "WRITE TO ME"
+  },
+  "footer": {
+    "copyright": "© MMXXVI · YOUR NAME · HANDCRAFTED",
+    "github": "GITHUB",
+    "linkedin": "LINKEDIN",
+    "email": "EMAIL"
+  }
+}

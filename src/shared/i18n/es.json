@@ -1,0 +1,79 @@
+{
+  "hero": {
+    "eyebrow": "Tu Nombre — Senior FullStack Engineer · MMXXVI",
+    "titleBefore": "El código como",
+    "titleEmphasis": "acto de creación",
+    "subtitle": "Diez años esculpiendo sistemas que escalan — del primer trazo de la arquitectura al último detalle de la interfaz.",
+    "scrollHint": "DESPLAZA · LA BÓVEDA CONTINÚA ↓"
+  },
+  "manifesto": {
+    "label": "MANIFIESTO · INSCRIPCIÓN Nº 1",
+    "quote": "Creo que el buen software se construye como se pintaba una bóveda: con oficio, paciencia y la obsesión por el detalle que nadie verá de cerca — pero que todos sienten. Escribe aquí tu bio en dos o tres líneas.",
+    "technique": "TÉCNICA — SISTEMAS DISTRIBUIDOS · ÓLEO SOBRE PRODUCCIÓN"
+  },
+  "stack": {
+    "label": "SALA II · PANTEÓN DE HERRAMIENTAS",
+    "title": "Las herramientas del oficio"
+  },
+  "obras": {
+    "label": "SALA III · CATÁLOGO DE OBRAS",
+    "title": "Obras destacadas",
+    "technique": "TÉCNICA",
+    "role": "ROL",
+    "year": "AÑO",
+    "result": "RESULTADO",
+    "cta": "VER LA OBRA →",
+    "imagePlaceholder": "Captura / mockup del proyecto — arrastra tu imagen",
+    "plateLabel": "OBRA Nº {{numeral}} · {{year}}",
+    "items": {
+      "obra1": {
+        "title": "Nombre del Proyecto Uno",
+        "desc": "Descripción breve del proyecto: qué problema resolvía, para quién, y qué lo hace notable. Dos o tres frases.",
+        "role": "Arquitectura y desarrollo full-stack",
+        "result": "Resultado clave medible (p. ej. +40% conversión)"
+      },
+      "obra2": {
+        "title": "Nombre del Proyecto Dos",
+        "desc": "Descripción breve del proyecto: contexto, reto técnico principal y tu aportación concreta.",
+        "role": "Tech lead",
+        "result": "Resultado clave medible"
+      },
+      "obra3": {
+        "title": "Nombre del Proyecto Tres",
+        "desc": "Descripción breve del proyecto: escala, restricciones y decisión de diseño de la que estás orgulloso.",
+        "role": "Senior engineer",
+        "result": "Resultado clave medible"
+      }
+    }
+  },
+  "frieze": {
+    "label": "SALA IV · FRISO CRONOLÓGICO",
+    "title": "Experiencia",
+    "items": {
+      "job1": { "years": "2022 — HOY", "company": "Empresa Actual", "role": "Senior FullStack Engineer", "feat": "Logro clave: qué construiste, a qué escala, y el impacto en negocio o equipo." },
+      "job2": { "years": "2019 — 2022", "company": "Empresa Anterior", "role": "FullStack Engineer", "feat": "Logro clave de esta etapa: sistema, migración o producto que lideraste." },
+      "job3": { "years": "2017 — 2019", "company": "Otra Empresa", "role": "Software Engineer", "feat": "Logro clave: primeras responsabilidades de arquitectura o mentoring." },
+      "job4": { "years": "2015 — 2017", "company": "Primera Empresa", "role": "Junior Developer", "feat": "Dónde empezó todo: primer producto en producción." }
+    }
+  },
+  "testimonials": {
+    "label": "SALA V · PLACAS CONMEMORATIVAS",
+    "title": "Lo que dicen de mi trabajo",
+    "items": {
+      "t1": { "quote": "Cita de recomendación: dos frases sobre cómo es trabajar contigo y el impacto que tuviste.", "author": "Nombre — Cargo, Empresa" },
+      "t2": { "quote": "Segunda cita: otra voz, idealmente un founder o manager, sobre un resultado concreto.", "author": "Nombre — Cargo, Empresa" }
+    }
+  },
+  "contact": {
+    "label": "EPÍLOGO · LA LUZ ENTRA POR LA CÚPULA",
+    "title": "Construyamos la próxima obra juntos",
+    "subtitle": "Disponible para proyectos ambiciosos, equipos exigentes y problemas que merezcan una bóveda propia.",
+    "cta": "ESCRÍBEME"
+  },
+  "footer": {
+    "copyright": "© MMXXVI · TU NOMBRE · HECHO A MANO",
+    "github": "GITHUB",
+    "linkedin": "LINKEDIN",
+    "email": "EMAIL"
+  }
+}
