@@ -59,13 +59,6 @@ export default function FrescoDome() {
       const ctx = canvas?.getContext('2d')
       if (!canvas || !ctx) return
 
-      function resizeCanvas() {
-        canvas!.width = window.innerWidth
-        canvas!.height = window.innerHeight
-      }
-      resizeCanvas()
-      window.addEventListener('resize', resizeCanvas)
-
       const state = {
         rotation: 0,
         intensity: calculateRayIntensity(0),
@@ -76,8 +69,17 @@ export default function FrescoDome() {
         drawRays(ctx!, canvas!.width, canvas!.height, state.rotation, state.intensity, state.focalYPercent)
       }
 
-      if (prefersReducedMotion) {
+      // Setting canvas.width/height clears its bitmap to transparent, so every resize
+      // must repaint — otherwise the reduced-motion static frame goes blank after a resize.
+      function resizeCanvas() {
+        canvas!.width = window.innerWidth
+        canvas!.height = window.innerHeight
         render()
+      }
+      resizeCanvas()
+      window.addEventListener('resize', resizeCanvas)
+
+      if (prefersReducedMotion) {
         return () => window.removeEventListener('resize', resizeCanvas)
       }
 

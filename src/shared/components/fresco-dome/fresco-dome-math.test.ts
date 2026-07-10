@@ -1,10 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import {
-  calculateFocalPointYPercent,
-  calculateRayIntensity,
-  calculateRayRotationDegrees,
-  clampProgress,
-} from './fresco-dome-math'
+import { calculateFocalPointYPercent, calculateRayIntensity, clampProgress } from './fresco-dome-math'
 
 describe('clampProgress', () => {
   it('clamps values below 0 to 0', () => {
@@ -49,23 +44,5 @@ describe('calculateFocalPointYPercent', () => {
 
   it('is proportional at the midpoint', () => {
     expect(calculateFocalPointYPercent(0.5)).toBeCloseTo(57.5)
-  })
-})
-
-describe('calculateRayRotationDegrees', () => {
-  it('is 0 degrees at elapsed time 0', () => {
-    expect(calculateRayRotationDegrees(0, 120)).toBe(0)
-  })
-
-  it('is 180 degrees at half the revolution duration', () => {
-    expect(calculateRayRotationDegrees(60, 120)).toBe(180)
-  })
-
-  it('wraps around past one full revolution', () => {
-    expect(calculateRayRotationDegrees(150, 120)).toBe(90)
-  })
-
-  it('returns 0 for a non-positive revolution duration', () => {
-    expect(calculateRayRotationDegrees(50, 0)).toBe(0)
   })
 })

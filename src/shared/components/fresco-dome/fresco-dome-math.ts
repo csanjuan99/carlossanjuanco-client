@@ -16,9 +16,3 @@ export function calculateFocalPointYPercent(scrollProgress: number): number {
   const clamped = clampProgress(scrollProgress)
   return START_FOCAL_Y_PERCENT + (END_FOCAL_Y_PERCENT - START_FOCAL_Y_PERCENT) * clamped
 }
-
-export function calculateRayRotationDegrees(elapsedSeconds: number, revolutionDurationSeconds: number): number {
-  if (revolutionDurationSeconds <= 0) return 0
-  const cycleProgress = (elapsedSeconds % revolutionDurationSeconds) / revolutionDurationSeconds
-  return cycleProgress * 360
-}
