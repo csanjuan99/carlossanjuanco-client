@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { motion } from 'framer-motion'
 
 interface RevealTextProps {
@@ -48,16 +49,17 @@ export default function RevealText({
         custom={staggerDelay}
       >
         {words.map((word, index) => (
-          <span
-            key={`${word}-${index}`}
-            className={wordClassName}
-            style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top' }}
-          >
-            <motion.span style={{ display: 'inline-block' }} variants={wordVariants}>
-              {word}
-              {index < words.length - 1 ? ' ' : ''}
-            </motion.span>
-          </span>
+          <Fragment key={`${word}-${index}`}>
+            <span
+              className={wordClassName}
+              style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top' }}
+            >
+              <motion.span style={{ display: 'inline-block' }} variants={wordVariants}>
+                {word}
+              </motion.span>
+            </span>
+            {index < words.length - 1 ? ' ' : ''}
+          </Fragment>
         ))}
       </motion.span>
     </Tag>
