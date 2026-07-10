@@ -41,6 +41,7 @@ export default function RevealText({
   return (
     <Tag className={className}>
       <motion.span
+        key={text}
         style={{ display: 'inline' }}
         initial="hidden"
         whileInView="visible"
