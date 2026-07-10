@@ -9,6 +9,7 @@ interface RevealTextProps {
   as?: 'p' | 'h1' | 'h2' | 'span'
 }
 
+// eslint-disable-next-line react-refresh/only-export-components -- pure helper, exported for unit testing
 export function splitIntoWords(text: string): string[] {
   return text.split(' ').filter((word) => word.length > 0)
 }

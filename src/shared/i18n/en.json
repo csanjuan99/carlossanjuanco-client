@@ -18,6 +18,7 @@
   "obras": {
     "label": "GALLERY III · CATALOGUE OF WORKS",
     "title": "Featured works",
+    "numeralPrefix": "No.",
     "technique": "TECHNIQUE",
     "role": "ROLE",
     "year": "YEAR",

@@ -18,6 +18,7 @@
   "obras": {
     "label": "SALA III · CATÁLOGO DE OBRAS",
     "title": "Obras destacadas",
+    "numeralPrefix": "Nº",
     "technique": "TÉCNICA",
     "role": "ROL",
     "year": "AÑO",

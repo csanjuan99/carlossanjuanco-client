@@ -19,7 +19,7 @@ export default function ObrasSection() {
         >
           <div>
             <div className="font-fraunces text-[clamp(64px,9vw,130px)] font-light italic leading-none text-sienna/30">
-              Nº {project.numeral}
+              {t('obras.numeralPrefix')} {project.numeral}
             </div>
             <h3 className="mb-4 mt-2 font-fraunces text-[clamp(30px,3.6vw,52px)] font-semibold tracking-tight">
               {t(`obras.items.${project.id}.title`)}

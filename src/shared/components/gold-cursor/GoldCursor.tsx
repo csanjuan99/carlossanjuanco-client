@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
+function isFinePointerWithoutReducedMotion(): boolean {
+  const finePointer = window.matchMedia('(pointer: fine)').matches
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  return finePointer && !reducedMotion
+}
+
 export default function GoldCursor() {
-  const [enabled, setEnabled] = useState(false)
+  const [enabled] = useState(isFinePointerWithoutReducedMotion)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const springX = useSpring(x, { stiffness: 300, damping: 30, mass: 0.4 })
   const springY = useSpring(y, { stiffness: 300, damping: 30, mass: 0.4 })
 
   useEffect(() => {
-    const finePointer = window.matchMedia('(pointer: fine)').matches
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!finePointer || reducedMotion) return
-
-    setEnabled(true)
+    if (!enabled) return
 
     function handleMove(event: MouseEvent) {
       x.set(event.clientX)
@@ -22,7 +24,7 @@ export default function GoldCursor() {
 
     window.addEventListener('mousemove', handleMove)
     return () => window.removeEventListener('mousemove', handleMove)
-  }, [x, y])
+  }, [enabled, x, y])
 
   if (!enabled) return null
 
