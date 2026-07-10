@@ -7,12 +7,16 @@ function isFinePointerWithoutReducedMotion(): boolean {
   return finePointer && !reducedMotion
 }
 
+const HOVER_TARGET_SELECTOR = 'a, [data-cursor-hover]'
+
 export default function GoldCursor() {
   const [enabled] = useState(isFinePointerWithoutReducedMotion)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
+  const scale = useMotionValue(1)
   const springX = useSpring(x, { stiffness: 300, damping: 30, mass: 0.4 })
   const springY = useSpring(y, { stiffness: 300, damping: 30, mass: 0.4 })
+  const springScale = useSpring(scale, { stiffness: 300, damping: 30, mass: 0.4 })
 
   useEffect(() => {
     if (!enabled) return
@@ -22,9 +26,18 @@ export default function GoldCursor() {
       y.set(event.clientY)
     }
 
+    function handleOver(event: MouseEvent) {
+      const target = event.target instanceof Element ? event.target.closest(HOVER_TARGET_SELECTOR) : null
+      scale.set(target ? 2.2 : 1)
+    }
+
     window.addEventListener('mousemove', handleMove)
-    return () => window.removeEventListener('mousemove', handleMove)
-  }, [enabled, x, y])
+    window.addEventListener('mouseover', handleOver)
+    return () => {
+      window.removeEventListener('mousemove', handleMove)
+      window.removeEventListener('mouseover', handleOver)
+    }
+  }, [enabled, x, y, scale])
 
   if (!enabled) return null
 
@@ -46,6 +59,7 @@ export default function GoldCursor() {
         zIndex: 80,
         x: springX,
         y: springY,
+        scale: springScale,
       }}
     />
   )
