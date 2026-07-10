@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import BlindsReveal from '@/shared/components/blinds-reveal/BlindsReveal'
 import BrushWipeImage from '@/shared/components/brush-wipe-image/BrushWipeImage'
 import { PROJECTS } from '../../data/projects.data'
 
@@ -7,10 +8,10 @@ export default function ObrasSection() {
 
   return (
     <section className="py-24 md:py-32">
-      <div className="mb-16 px-6 text-center">
+      <BlindsReveal className="mb-16 px-6 text-center">
         <div className="mb-4 font-mono text-[11px] tracking-[0.34em] text-sienna">{t('obras.label')}</div>
         <h2 className="font-fraunces text-[clamp(36px,5vw,64px)] font-medium tracking-tight">{t('obras.title')}</h2>
-      </div>
+      </BlindsReveal>
 
       {PROJECTS.map((project) => (
         <article
