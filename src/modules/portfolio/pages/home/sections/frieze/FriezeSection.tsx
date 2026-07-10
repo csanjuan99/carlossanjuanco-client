@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import BlindsReveal from '@/shared/components/blinds-reveal/BlindsReveal'
 import { useFriezeScroll } from '@/shared/hooks/use-frieze-scroll'
 import { FRIEZE_ENTRIES } from '../../data/frieze.data'
 import type { FriezeEntryData } from '../../data/frieze.data'
@@ -10,10 +11,10 @@ export default function FriezeSection() {
 
   return (
     <section className="py-[10vh]">
-      <div className="mx-auto mb-14 max-w-[1180px] px-6">
+      <BlindsReveal className="mx-auto mb-14 max-w-[1180px] px-6">
         <div className="mb-4 font-mono text-[11px] tracking-[0.34em] text-sienna">{t('frieze.label')}</div>
         <h2 className="font-fraunces text-[clamp(36px,5vw,64px)] font-medium tracking-tight">{t('frieze.title')}</h2>
-      </div>
+      </BlindsReveal>
 
       {/* Desktop: sticky-container horizontal scroll. Below md, this is replaced by a plain vertical stack — no scroll-jack on mobile. */}
       <div
