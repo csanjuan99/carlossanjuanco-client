@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
+import { getPrefersReducedMotion } from '@/shared/hooks/use-prefers-reduced-motion'
 
 function isFinePointerWithoutReducedMotion(): boolean {
   const finePointer = window.matchMedia('(pointer: fine)').matches
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  return finePointer && !reducedMotion
+  return finePointer && !getPrefersReducedMotion()
 }
 
 const HOVER_TARGET_SELECTOR = 'a, [data-cursor-hover]'
