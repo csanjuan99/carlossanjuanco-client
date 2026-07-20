@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -42,7 +42,6 @@ export async function run({
   fetchImpl = fetch,
   outDir = DEFAULT_OUT_DIR,
   fileExists = existsSync,
-  readFile = (filePath) => readFileSync(filePath, 'utf-8'),
   writeFile = (filePath, content) => writeFileSync(filePath, content),
   ensureDir = (dir) => mkdirSync(dir, { recursive: true }),
   log = console.log,
@@ -60,7 +59,6 @@ export async function run({
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error)
       if (fileExists(filePath)) {
-        readFile(filePath)
         warn(`[snapshot] WARNING: failed to refresh "${locale}" snapshot (${message}); reusing committed snapshot`)
       } else {
         warn(`[snapshot] ERROR: failed to fetch "${locale}" snapshot and no committed snapshot exists (${message})`)
