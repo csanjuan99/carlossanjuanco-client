@@ -1,50 +1,51 @@
-import { useTranslation } from 'react-i18next'
+import { useContent } from '@/shared/content/ContentProvider'
 import BlindsReveal from '@/shared/components/blinds-reveal/BlindsReveal'
 import BrushWipeImage from '@/shared/components/brush-wipe-image/BrushWipeImage'
-import { PROJECTS } from '../../data/projects.data'
+import { formatPlateLabel } from './format-plate-label'
 
 export default function ObrasSection() {
-  const { t } = useTranslation()
+  const { content } = useContent()
+  const { obrasSection, projects } = content
 
   return (
     <section className="py-24 md:py-32">
       <BlindsReveal className="mb-16 px-6 text-center">
-        <div className="mb-4 font-mono text-[11px] tracking-[0.34em] text-sienna">{t('obras.label')}</div>
-        <h2 className="font-fraunces text-[clamp(36px,5vw,64px)] font-medium tracking-tight">{t('obras.title')}</h2>
+        <div className="mb-4 font-mono text-[11px] tracking-[0.34em] text-sienna">{obrasSection.label}</div>
+        <h2 className="font-fraunces text-[clamp(36px,5vw,64px)] font-medium tracking-tight">{obrasSection.title}</h2>
       </BlindsReveal>
 
-      {PROJECTS.map((project) => (
+      {projects.map((project) => (
         <article
-          key={project.id}
+          key={project.documentId}
           className="mx-auto grid min-h-screen max-w-[1240px] grid-cols-1 items-center gap-12 px-6 py-20 md:grid-cols-2 md:gap-16"
         >
           <div>
             <div className="font-fraunces text-[clamp(64px,9vw,130px)] font-light italic leading-none text-sienna/30">
-              {t('obras.numeralPrefix')} {project.numeral}
+              {obrasSection.numeralPrefix} {project.numeral}
             </div>
             <h3 className="mb-4 mt-2 font-fraunces text-[clamp(30px,3.6vw,52px)] font-semibold tracking-tight">
-              {t(`obras.items.${project.id}.title`)}
+              {project.title}
             </h3>
             <p className="mb-8 max-w-[46ch] text-lg leading-relaxed text-ink/75">
-              {t(`obras.items.${project.id}.desc`)}
+              {project.description}
             </p>
 
             <div className="grid max-w-[520px] grid-cols-[110px_1fr] gap-x-4 gap-y-2 border-t border-sienna/30 pt-5 font-mono text-xs tracking-wider">
-              <span className="tracking-[0.24em] text-sienna">{t('obras.technique')}</span>
+              <span className="tracking-[0.24em] text-sienna">{obrasSection.technique}</span>
               <span className="text-ink/80">{project.stack}</span>
-              <span className="tracking-[0.24em] text-sienna">{t('obras.role')}</span>
-              <span className="text-ink/80">{t(`obras.items.${project.id}.role`)}</span>
-              <span className="tracking-[0.24em] text-sienna">{t('obras.year')}</span>
+              <span className="tracking-[0.24em] text-sienna">{obrasSection.role}</span>
+              <span className="text-ink/80">{project.role}</span>
+              <span className="tracking-[0.24em] text-sienna">{obrasSection.year}</span>
               <span className="text-ink/80">{project.year}</span>
-              <span className="tracking-[0.24em] text-sienna">{t('obras.result')}</span>
-              <span className="text-ink/80">{t(`obras.items.${project.id}.result`)}</span>
+              <span className="tracking-[0.24em] text-sienna">{obrasSection.result}</span>
+              <span className="text-ink/80">{project.result}</span>
             </div>
 
             <a
               href={project.link}
               className="mt-7 inline-block border-b border-gold pb-1 font-mono text-xs tracking-[0.26em] text-sienna transition-colors hover:text-gold"
             >
-              {t('obras.cta')}
+              {obrasSection.cta}
             </a>
           </div>
 
@@ -53,13 +54,13 @@ export default function ObrasSection() {
               <div className="bg-parchment p-2">
                 <BrushWipeImage className="flex h-[clamp(260px,36vw,420px)] w-full items-center justify-center border border-dashed border-sienna/40 bg-parchment-dark">
                   <span className="px-4 text-center font-mono text-xs tracking-[0.2em] text-sienna/70">
-                    {t('obras.imagePlaceholder')}
+                    {obrasSection.imagePlaceholder}
                   </span>
                 </BrushWipeImage>
               </div>
             </div>
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap border border-sienna/30 bg-parchment px-4 py-1.5 font-mono text-[10px] tracking-[0.3em] text-sienna shadow-lg">
-              {t('obras.plateLabel', { numeral: project.numeral, year: project.year })}
+              {formatPlateLabel(obrasSection.plateLabel, project.numeral, project.year)}
             </div>
           </div>
         </article>

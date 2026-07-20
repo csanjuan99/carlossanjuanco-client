@@ -1,8 +1,9 @@
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
+import { useContent } from '@/shared/content/ContentProvider'
 
 export default function ContactSection() {
-  const { t } = useTranslation()
+  const { content } = useContent()
+  const contact = content.contact
 
   return (
     <section className="relative box-border flex min-h-[88vh] flex-col items-center justify-center overflow-hidden px-6 py-[14vh] text-center">
@@ -18,17 +19,17 @@ export default function ContactSection() {
         }}
       />
       <div className="relative">
-        <div className="mb-6 font-mono text-[11px] tracking-[0.34em] text-sienna">{t('contact.label')}</div>
+        <div className="mb-6 font-mono text-[11px] tracking-[0.34em] text-sienna">{contact.label}</div>
         <h2 className="mx-auto mb-5 max-w-[16ch] font-fraunces text-[clamp(40px,6vw,84px)] font-medium tracking-tight">
-          {t('contact.title')}
+          {contact.title}
         </h2>
-        <p className="mx-auto mb-14 max-w-[44ch] text-lg leading-relaxed text-ink/70">{t('contact.subtitle')}</p>
+        <p className="mx-auto mb-14 max-w-[44ch] text-lg leading-relaxed text-ink/70">{contact.subtitle}</p>
         <a
-          href="mailto:hello@example.com"
+          href={`mailto:${contact.email}`}
           className="inline-flex h-[158px] w-[158px] items-center justify-center rounded-full font-mono text-xs tracking-[0.3em] text-[#3d2413] shadow-2xl transition-transform duration-500 hover:scale-105"
           style={{ background: 'radial-gradient(circle at 36% 30%, #e8cf98, #d4af6a 48%, #a97f3e 82%, #8f4a2e)' }}
         >
-          {t('contact.cta')}
+          {contact.cta}
         </a>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
+import { useContent } from '@/shared/content/ContentProvider'
+import { mediaUrl } from '@/shared/api/strapi'
 import RevealText from '@/shared/components/reveal-text/RevealText'
 import LanguageToggle from '@/shared/components/language-toggle/LanguageToggle'
 import heroCreacion from '@/assets/hero-creacion.png'
@@ -28,7 +29,9 @@ const HERO_IMAGE_CLIP_PATH =
   'polygon(0% 6%, 18% 1%, 50% 4%, 82% 0%, 100% 7%, 99% 94%, 80% 100%, 48% 96%, 20% 100%, 1% 93%)'
 
 export default function HeroSection() {
-  const { t } = useTranslation()
+  const { content } = useContent()
+  const hero = content.hero
+  const heroImageSrc = mediaUrl(hero.image) ?? heroCreacion
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
 
@@ -89,12 +92,12 @@ export default function HeroSection() {
         transition={{ duration: 1, delay: 0.2 }}
         className="mb-7 text-center font-mono text-xs uppercase tracking-[0.32em] text-sienna"
       >
-        {t('hero.eyebrow')}
+        {hero.eyebrow}
       </motion.div>
 
       <h1 className="max-w-[14ch] text-center font-fraunces text-[clamp(52px,9.5vw,148px)] font-medium leading-[0.98] tracking-tight">
-        <RevealText as="span" text={t('hero.titleBefore')} className="inline" />{' '}
-        <RevealText as="span" text={t('hero.titleEmphasis')} className="inline italic text-sienna" />
+        <RevealText as="span" text={hero.titleBefore} className="inline" />{' '}
+        <RevealText as="span" text={hero.titleEmphasis} className="inline italic text-sienna" />
       </h1>
 
       <motion.p
@@ -103,7 +106,7 @@ export default function HeroSection() {
         transition={{ duration: 1, delay: 0.5 }}
         className="mb-10 mt-8 max-w-[44ch] text-center text-[clamp(17px,1.6vw,21px)] leading-relaxed text-ink/70"
       >
-        {t('hero.subtitle')}
+        {hero.subtitle}
       </motion.p>
 
       <motion.div
@@ -113,8 +116,8 @@ export default function HeroSection() {
         className="relative w-[min(760px,88vw)]"
       >
         <img
-          src={heroCreacion}
-          alt={t('hero.imageAlt')}
+          src={heroImageSrc}
+          alt={hero.imageAlt}
           draggable={false}
           className="pointer-events-none block h-[min(38vh,340px)] w-full select-none object-cover"
           style={{ clipPath: HERO_IMAGE_CLIP_PATH }}
@@ -127,7 +130,7 @@ export default function HeroSection() {
         transition={{ duration: 1, delay: 1.2 }}
         className="absolute bottom-7 left-1/2 -translate-x-1/2 font-mono text-[11px] tracking-[0.3em] text-ink/50"
       >
-        {t('hero.scrollHint')}
+        {hero.scrollHint}
       </motion.div>
     </section>
   )

@@ -1,29 +1,30 @@
-import { useTranslation } from 'react-i18next'
+import { useContent } from '@/shared/content/ContentProvider'
 
 export default function Footer() {
-  const { t } = useTranslation()
+  const { content } = useContent()
+  const siteSetting = content.siteSetting
 
   return (
     <footer className="flex flex-wrap items-center justify-between gap-5 border-t border-ink/15 px-6 py-7 md:px-16">
-      <div className="font-mono text-[11px] tracking-[0.24em] text-ink/55">{t('footer.copyright')}</div>
+      <div className="font-mono text-[11px] tracking-[0.24em] text-ink/55">{siteSetting.copyright}</div>
       <div className="flex gap-7">
         <a
-          href="https://github.com/your-username"
+          href={siteSetting.githubUrl}
           className="font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
         >
-          {t('footer.github')}
+          {siteSetting.githubLabel}
         </a>
         <a
-          href="https://linkedin.com/in/your-username"
+          href={siteSetting.linkedinUrl}
           className="font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
         >
-          {t('footer.linkedin')}
+          {siteSetting.linkedinLabel}
         </a>
         <a
-          href="mailto:hello@example.com"
+          href={`mailto:${siteSetting.email}`}
           className="font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
         >
-          {t('footer.email')}
+          {siteSetting.emailLabel}
         </a>
       </div>
     </footer>

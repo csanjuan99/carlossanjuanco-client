@@ -1,11 +1,11 @@
-import { useTranslation } from 'react-i18next'
+import { useContent } from '@/shared/content/ContentProvider'
 
 export default function LanguageToggle() {
-  const { i18n } = useTranslation()
-  const nextLanguage = i18n.language === 'es' ? 'en' : 'es'
+  const { locale, setLocale } = useContent()
+  const nextLocale = locale === 'es' ? 'en' : 'es'
 
   function handleClick() {
-    i18n.changeLanguage(nextLanguage)
+    setLocale(nextLocale)
   }
 
   return (
@@ -13,9 +13,9 @@ export default function LanguageToggle() {
       type="button"
       onClick={handleClick}
       className="font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
-      aria-label={`Switch language to ${nextLanguage === 'en' ? 'English' : 'Español'}`}
+      aria-label={`Switch language to ${nextLocale === 'en' ? 'English' : 'Español'}`}
     >
-      {nextLanguage.toUpperCase()}
+      {nextLocale.toUpperCase()}
     </button>
   )
 }

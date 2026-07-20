@@ -1,27 +1,27 @@
-import { useTranslation } from 'react-i18next'
 import { motion } from 'framer-motion'
-import { STACK_GROUPS } from '../../data/stack-groups.data'
+import { useContent } from '@/shared/content/ContentProvider'
 
 export default function StackSection() {
-  const { t } = useTranslation()
+  const { content } = useContent()
+  const { stackSection, stackGroups } = content
 
   return (
     <section className="mx-auto max-w-[1180px] px-6 py-[10vh] pb-[14vh]">
       <div className="mb-16 text-center">
-        <div className="mb-4 font-mono text-[11px] tracking-[0.34em] text-sienna">{t('stack.label')}</div>
-        <h2 className="font-fraunces text-[clamp(36px,5vw,64px)] font-medium tracking-tight">{t('stack.title')}</h2>
+        <div className="mb-4 font-mono text-[11px] tracking-[0.34em] text-sienna">{stackSection.label}</div>
+        <h2 className="font-fraunces text-[clamp(36px,5vw,64px)] font-medium tracking-tight">{stackSection.title}</h2>
       </div>
 
-      {STACK_GROUPS.map((group) => (
+      {stackGroups.map((group) => (
         <div key={group.name} className="mb-14">
           <div className="mb-6 flex items-center gap-4">
             <div className="whitespace-nowrap font-mono text-[11px] tracking-[0.3em] text-sienna">{group.name}</div>
             <div className="h-px flex-1 bg-gradient-to-r from-sienna/35 to-transparent" />
           </div>
           <div className="flex flex-wrap gap-5">
-            {group.items.map((tool) => (
+            {group.items.map((item) => (
               <motion.div
-                key={tool}
+                key={item.label}
                 data-cursor-hover
                 initial={{ opacity: 0, scale: 0.82, y: 26 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function StackSection() {
                 }}
               >
                 <span className="px-2.5 text-center font-fraunces text-sm font-semibold leading-tight text-sienna">
-                  {tool}
+                  {item.label}
                 </span>
               </motion.div>
             ))}
