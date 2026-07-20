@@ -17,35 +17,35 @@ slices being merged.
 Satisfies: web-performance spec — "home page renders from build-time content
 snapshot", "Build-time fetch failure" (soft-mode, amended), "tests stay green".
 
-- [ ] 1.1 (test) Add `scripts/snapshot-content.test.mjs` (or vitest-compatible
+- [x] 1.1 (test) Add `scripts/snapshot-content.test.mjs` (or vitest-compatible
       equivalent) asserting: on successful fetch of all 12 endpoints × 2 locales,
       writes `src/shared/content/snapshot/{es,en}.json`; on network failure with an
       existing committed snapshot, logs a warning and exits 0 leaving the committed
       file untouched; on network failure with no committed snapshot present, exits
       non-zero. Run `yarn test` — confirm the new tests fail (script doesn't exist
       yet).
-- [ ] 1.2 (test) Add a unit test asserting `contentSnapshot` (from
+- [x] 1.2 (test) Add a unit test asserting `contentSnapshot` (from
       `src/shared/content/snapshot/index.ts`) satisfies the `SiteContent` shape for
       both `es` and `en` — will fail until 1.4/1.5 exist.
-- [ ] 1.3 (test) Extend `ContentProvider` tests: (a) hero content is present in the
+- [x] 1.3 (test) Extend `ContentProvider` tests: (a) hero content is present in the
       render tree synchronously on mount, before any fetch resolves, with
       `status: 'ready'` immediately; (b) a successful refetch replaces content
       (unconditional swap); (c) a failed refetch keeps the seeded/snapshot content
       and stays `ready` (no error screen) — only show the error screen when there
       is no snapshot for the locale and the fetch also fails. Run `yarn test` —
       confirm failures.
-- [ ] 1.4 Implement `scripts/snapshot-content.mjs` (Node global `fetch`, no new
+- [x] 1.4 Implement `scripts/snapshot-content.mjs` (Node global `fetch`, no new
       deps): fetch 12 endpoints × es/en, write
       `src/shared/content/snapshot/{es,en}.json`; soft-mode fallback per amended
       spec (warn + reuse committed snapshot on failure, non-zero exit only when no
       committed snapshot exists for that locale).
-- [ ] 1.5 Create `src/shared/content/snapshot/index.ts` exporting
+- [x] 1.5 Create `src/shared/content/snapshot/index.ts` exporting
       `contentSnapshot: Record<SupportedLocale, SiteContent>`, statically importing
       the committed JSON (no `public/` fetch). Generate/commit an initial
       `{es,en}.json` snapshot pair by running `yarn snapshot` once against the live
       Strapi instance (or hand-seed from current live content if Strapi isn't
       reachable in this environment) so 1.2 has real data to assert against.
-- [ ] 1.6 Modify `src/shared/content/ContentProvider.tsx`:
+- [x] 1.6 Modify `src/shared/content/ContentProvider.tsx`:
       - Seed initial state: `useState<SiteContent>(() =>
         contentSnapshot[getInitialLocale()])` and `useState<ContentStatus>('ready')`.
       - **GATE-003 fix**: the existing mount/locale-change effect currently calls
@@ -61,10 +61,10 @@ snapshot", "Build-time fetch failure" (soft-mode, amended), "tests stay green".
         fall back on and the fetch failed.
       - Remove the `!content` null-return early-exit path for locales that have
         snapshot data (dead now that content is always seeded).
-- [ ] 1.7 Wire `prebuild`/`snapshot` scripts into `package.json`
+- [x] 1.7 Wire `prebuild`/`snapshot` scripts into `package.json`
       (`"prebuild": "node scripts/snapshot-content.mjs"`,
       `"snapshot": "node scripts/snapshot-content.mjs"`).
-- [ ] 1.8 Run `yarn test` — confirm all Slice 1 tests (1.1-1.3) and the full
+- [x] 1.8 Run `yarn test` — confirm all Slice 1 tests (1.1-1.3) and the full
       pre-existing suite are green (35 + new). Run `yarn build` to confirm
       `noUnusedLocals`/`noUnusedParameters` pass with the `ContentProvider` changes.
 
