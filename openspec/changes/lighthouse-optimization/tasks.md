@@ -128,15 +128,15 @@ Satisfies: seo-metadata spec — meta description, canonical/OG/title, robots.tx
 Satisfies: accessibility-landmarks spec — single `<main>` landmark,
 structural-only change, "tests stay green".
 
-- [ ] 4.1 (test) Add/extend a test on
+- [x] 4.1 (test) Add/extend a test on
       `src/modules/portfolio/pages/home/index.tsx` asserting the page renders
       exactly one `<main>` element wrapping the section content, with the
       decorative canvas remaining a sibling outside `<main>` (per design). Run
       `yarn test` — confirm failure.
-- [ ] 4.2 Wrap the home page's section content in a single `<main>` landmark in
+- [x] 4.2 Wrap the home page's section content in a single `<main>` landmark in
       `index.tsx`, keeping the decorative canvas as a sibling. No layout/styling
       changes.
-- [ ] 4.3 Run `yarn test` — confirm 4.1 and full suite green (no visual/layout
+- [x] 4.3 Run `yarn test` — confirm 4.1 and full suite green (no visual/layout
       regression expected since this is structural-only).
 
 ## Cross-slice — measurement + final verification

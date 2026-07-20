@@ -14,14 +14,16 @@ export default function HomePage() {
     <div className="relative bg-sky-gradient font-newsreader text-ink">
       <FrescoDome />
       <GoldCursor />
-      <HeroSection />
-      <ManifestoSection />
-      <StackSection />
-      <ObrasSection />
-      <FriezeSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <Footer />
+      <main>
+        <HeroSection />
+        <ManifestoSection />
+        <StackSection />
+        <ObrasSection />
+        <FriezeSection />
+        <TestimonialsSection />
+        <ContactSection />
+        <Footer />
+      </main>
     </div>
   )
 }
