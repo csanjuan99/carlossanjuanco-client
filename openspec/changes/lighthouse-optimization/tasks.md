@@ -72,17 +72,17 @@ snapshot", "Build-time fetch failure" (soft-mode, amended), "tests stay green".
 
 Satisfies: web-performance spec — "hero image optimized", "tests stay green".
 
-- [ ] 2.1 (test) Extend/add `HeroSection` test asserting the rendered markup is a
+- [x] 2.1 (test) Extend/add `HeroSection` test asserting the rendered markup is a
       `<picture>` with a `<source type="image/webp" srcSet="/hero-creacion.webp">`
       and an `<img src="/hero-creacion.png">` fallback carrying explicit `width`
       and `height` attributes matching the optimized asset dimensions
       (≈1520×680) and no `fetchpriority`/CMS-sourced `src` branch. Run `yarn
       test` — confirm failure.
-- [ ] 2.2 Implement `scripts/optimize-hero.mjs` (sharp devDep) that resizes the
+- [x] 2.2 Implement `scripts/optimize-hero.mjs` (sharp devDep) that resizes the
       source hero asset to ≈1520×680 and emits `public/hero-creacion.webp` +
       compressed `public/hero-creacion.png`. Run it once to produce the committed
       output files.
-- [ ] 2.3 Modify `HeroSection.tsx`:
+- [x] 2.3 Modify `HeroSection.tsx`:
       - Replace the existing hero `<img>` with a `<picture>` (`webp` source +
         `png` fallback), stable unhashed `/hero-creacion.{webp,png}` paths,
         explicit `width`/`height`.
@@ -94,14 +94,14 @@ Satisfies: web-performance spec — "hero image optimized", "tests stay green".
         still passes a CMS hero prop, delete that prop from the component's
         interface in the same task, not just its usage.
       - Add `fetchpriority="high"` to the fallback `<img>`.
-- [ ] 2.4 Delete `src/assets/hero-creacion.png` (superseded by the `public/`
+- [x] 2.4 Delete `src/assets/hero-creacion.png` (superseded by the `public/`
       optimized pair) and remove now-unused imports/references.
-- [ ] 2.5 Modify `index.html`: add
+- [x] 2.5 Modify `index.html`: add
       `<link rel="preload" as="image" href="/hero-creacion.webp"
       type="image/webp" fetchpriority="high">` (explicit `type="image/webp"` per
       GATE-002 so the browser can match it against the `<picture>` `<source>`
       correctly).
-- [ ] 2.6 Run `yarn test` — confirm 2.1 and full suite green. Run `yarn build` —
+- [x] 2.6 Run `yarn test` — confirm 2.1 and full suite green. Run `yarn build` —
       confirm no unused-code build failures from the removed CMS branch.
 
 ## Slice 3 — SEO meta + robots.txt
