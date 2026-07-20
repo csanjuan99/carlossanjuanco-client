@@ -109,15 +109,15 @@ Satisfies: web-performance spec — "hero image optimized", "tests stay green".
 Satisfies: seo-metadata spec — meta description, canonical/OG/title, robots.txt,
 "tests stay green".
 
-- [ ] 3.1 Modify `index.html`: set a real `<title>`, add
+- [x] 3.1 Modify `index.html`: set a real `<title>`, add
       `<meta name="description">`, `<link rel="canonical" href="https://carlossanjuan.co">`,
       and OG tags (`og:title`, `og:description`, `og:url`, `og:type`, `og:image`
       pointing at the optimized hero asset from Slice 2 if merged, otherwise the
       existing hero path — reconcile the `og:image` path when both slices land).
-- [ ] 3.2 Create `public/robots.txt` with `User-agent: *`, `Allow: /`, and a
+- [x] 3.2 Create `public/robots.txt` with `User-agent: *`, `Allow: /`, and a
       `Sitemap:` directive, distinct from the SPA's catch-all HTML fallback (verify
       it is served as `text/plain` at `/robots.txt`, not the `index.html` shell).
-- [ ] 3.3 No component-level test surface exists for static HTML/robots content;
+- [x] 3.3 No component-level test surface exists for static HTML/robots content;
       if the repo has an existing lint/test hook asserting `index.html` contents,
       extend it — otherwise this slice is verified structurally in the final
       Lighthouse measurement, not via `yarn test`. Run `yarn test` to confirm the
