@@ -26,6 +26,8 @@ dist-ssr
 *.sln
 *.sw?
 
+.engram/
+
 # design-sync
 .ds-sync/
 ds-bundle/

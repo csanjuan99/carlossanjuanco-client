@@ -143,22 +143,50 @@ structural-only change, "tests stay green".
 
 Depends on Slices 1-4 being merged.
 
-- [ ] 5.1 Create `scripts/measure.sh`: runs `yarn build && yarn preview`,
+- [x] 5.1 Create `scripts/measure.sh`: runs `yarn build && yarn preview`,
       launches Lighthouse (CLI or `lighthouse` npm devDep) against the preview
       URL, and asserts thresholds — Performance ≥95, Accessibility 100,
       Best-Practices 100, SEO 100, LCP <2.5s — failing (non-zero exit) if any
       threshold is missed. Wire it as an npm script (`"measure": "bash
       scripts/measure.sh"`).
-- [ ] 5.2 Run `yarn test` once more with all four slices merged — confirm full
+- [x] 5.2 Run `yarn test` once more with all four slices merged — confirm full
       green suite (35 + new Slice 1/2/4 tests).
-- [ ] 5.3 Run `yarn build` — confirm typecheck + build pass with zero unused
+- [x] 5.3 Run `yarn build` — confirm typecheck + build pass with zero unused
       code (validates the Slice 2 GATE-002 dead-branch removal held after all
       merges).
-- [ ] 5.4 Run `yarn measure` (`scripts/measure.sh`) against the production build
+- [x] 5.4 Run `yarn measure` (`scripts/measure.sh`) against the production build
       and record actual scores/LCP against the baseline (Performance 71→?,
       A11y 98→?, Best-Practices 100→?, SEO 83→?, LCP 11.0s→?s). If any threshold
       is missed, file a follow-up task per missed category rather than expanding
       this change's scope.
+
+      **Result** (local measurement, Strapi live, default Lighthouse mobile
+      throttling — 4x CPU slowdown, ~1.5 Mbps/150ms RTT simulated network):
+      Accessibility 100, Best-Practices 100, SEO 100 — all pass. Performance
+      68-84 (run-to-run variance) and LCP ~3.9-4.1s — both miss threshold.
+
+      Root cause (measured via Lighthouse's LCP-breakdown insight): the LCP
+      element (hero `<picture><img>`) itself loads fast — TTFB 7ms, resource
+      load delay 50ms, resource load duration 16ms (preload + WebP working as
+      designed) — but `elementRenderDelay` is ~2.3s. The hero image is wrapped
+      in a `framer-motion` `motion.div`/`motion.img` (FadeIn-style
+      scroll/mount animation), so paint is gated on JS bootup + animation
+      start under simulated CPU throttle, compounded by a single 489 KiB
+      (162 KiB gzip) JS bundle with ~73 KiB of estimated unused JS
+      (`unused-javascript` audit) that must download/parse/execute first.
+
+      This is an animation and bundling architecture concern, not covered by
+      this change's design (`design.md`: "no framework migration, component
+      tree and animations unchanged"). Fixing it would mean either
+      code-splitting the bundle or changing the hero's initial animation
+      state — both out of scope here per the "file a follow-up task ... rather
+      than expanding this change's scope" instruction above.
+
+      **Follow-up (new change, not this one)**: investigate (a) excluding the
+      hero image from its mount-in animation (render it visible immediately,
+      keep motion for surrounding content) and (b) route/vendor code-splitting
+      (gsap/framer-motion) to cut initial bundle weight, then re-measure
+      Performance/LCP.
 
 ---
 
