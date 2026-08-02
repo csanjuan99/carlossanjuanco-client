@@ -109,8 +109,13 @@ export default function HeroSection() {
         {hero.subtitle}
       </motion.p>
 
+      {/* initial={false}: this wrapper holds the LCP image, so it must not start
+          hidden/scaled-down — that gates the browser's first paint behind JS
+          bootstrap + animation start (~2.3s elementRenderDelay, measured). All
+          other Hero animations are intentionally left untouched. */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        data-testid="hero-image-wrapper"
+        initial={false}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-[min(760px,88vw)]"

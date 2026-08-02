@@ -1,6 +1,8 @@
-import { describe, expect, it, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
+import { cleanup, render, screen } from '@testing-library/react'
 import HeroSection from './HeroSection'
+
+afterEach(cleanup)
 
 vi.mock('@/shared/content/ContentProvider', () => ({
   useContent: () => ({
@@ -37,5 +39,13 @@ describe('HeroSection', () => {
     expect(img.getAttribute('width')).toBe('1520')
     expect(img.getAttribute('height')).toBe('680')
     expect(img.getAttribute('fetchpriority')).toBe('high')
+  })
+
+  it('does not gate the hero picture behind an initial-hidden mount animation state (LCP paint)', () => {
+    render(<HeroSection />)
+
+    const wrapper = screen.getByTestId('hero-image-wrapper')
+    expect(wrapper.querySelector('picture')).not.toBeNull()
+    expect(wrapper.getAttribute('style') ?? '').not.toContain('opacity: 0')
   })
 })
