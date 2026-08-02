@@ -1,4 +1,5 @@
 import { useContent } from '@/shared/content/ContentProvider'
+import { safeMailto, safeUrl } from '@/shared/api/safe-links'
 
 export default function Footer() {
   const { content } = useContent()
@@ -9,19 +10,19 @@ export default function Footer() {
       <div className="font-mono text-[11px] tracking-[0.24em] text-ink/55">{siteSetting.copyright}</div>
       <div className="flex gap-7">
         <a
-          href={siteSetting.githubUrl}
+          href={safeUrl(siteSetting.githubUrl)}
           className="font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
         >
           {siteSetting.githubLabel}
         </a>
         <a
-          href={siteSetting.linkedinUrl}
+          href={safeUrl(siteSetting.linkedinUrl)}
           className="font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
         >
           {siteSetting.linkedinLabel}
         </a>
         <a
-          href={`mailto:${siteSetting.email}`}
+          href={safeMailto(siteSetting.email)}
           className="font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
         >
           {siteSetting.emailLabel}
