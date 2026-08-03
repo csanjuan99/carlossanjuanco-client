@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 import { fetchMany, fetchOne } from '@/shared/api/strapi'
+import { contentSnapshot } from './snapshot'
 import type {
   ContactContent,
   Experience,
@@ -34,6 +35,10 @@ interface ContentContextValue {
 }
 
 const ContentContext = createContext<ContentContextValue | null>(null)
+
+function snapshotFor(locale: SupportedLocale): SiteContent | undefined {
+  return (contentSnapshot as Partial<Record<SupportedLocale, SiteContent>>)[locale]
+}
 
 async function fetchSiteContent(locale: SupportedLocale): Promise<SiteContent> {
   const [
@@ -82,8 +87,8 @@ async function fetchSiteContent(locale: SupportedLocale): Promise<SiteContent> {
 
 export function ContentProvider({ children }: { children: ReactNode }) {
   const [locale, setLocale] = useState<SupportedLocale>(getInitialLocale)
-  const [content, setContent] = useState<SiteContent | null>(null)
-  const [status, setStatus] = useState<ContentStatus>('loading')
+  const [content, setContent] = useState<SiteContent | null>(() => snapshotFor(locale) ?? null)
+  const [status, setStatus] = useState<ContentStatus>(() => (snapshotFor(locale) ? 'ready' : 'loading'))
   const [retryToken, setRetryToken] = useState(0)
 
   useEffect(() => {
@@ -91,7 +96,14 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = locale
 
     let cancelled = false
-    setStatus('loading')
+    const seeded = snapshotFor(locale)
+    if (seeded) {
+      setContent(seeded)
+      setStatus('ready')
+    } else {
+      setStatus('loading')
+    }
+
     fetchSiteContent(locale)
       .then((siteContent) => {
         if (cancelled) return
@@ -100,7 +112,9 @@ export function ContentProvider({ children }: { children: ReactNode }) {
       })
       .catch(() => {
         if (cancelled) return
-        setStatus('error')
+        if (!seeded) {
+          setStatus('error')
+        }
       })
     return () => {
       cancelled = true
