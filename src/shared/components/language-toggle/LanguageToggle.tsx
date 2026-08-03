@@ -12,7 +12,7 @@ export default function LanguageToggle() {
     <button
       type="button"
       onClick={handleClick}
-      className="font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
+      className="inline-flex h-11 w-11 items-center justify-center font-mono text-[11px] tracking-[0.26em] text-sienna transition-colors hover:text-gold"
       aria-label={`Switch language to ${nextLocale === 'en' ? 'English' : 'Español'}`}
     >
       {nextLocale.toUpperCase()}

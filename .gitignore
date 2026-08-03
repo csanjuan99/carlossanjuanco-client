@@ -26,9 +26,14 @@ dist-ssr
 *.sln
 *.sw?
 
+.engram/
+
 # design-sync
 .ds-sync/
 ds-bundle/
 .design-sync/.cache/
 .design-sync/learnings/
 .design-sync/node_modules
+
+# Impeccable local artifacts
+.impeccable/

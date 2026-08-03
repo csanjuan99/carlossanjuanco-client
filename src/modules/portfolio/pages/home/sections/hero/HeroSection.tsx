@@ -1,10 +1,11 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useContent } from '@/shared/content/ContentProvider'
-import { mediaUrl } from '@/shared/api/strapi'
 import RevealText from '@/shared/components/reveal-text/RevealText'
 import LanguageToggle from '@/shared/components/language-toggle/LanguageToggle'
-import heroCreacion from '@/assets/hero-creacion.png'
+
+const HERO_IMAGE_WIDTH = 1520
+const HERO_IMAGE_HEIGHT = 680
 
 interface CloudProps {
   scrollYProgress: ReturnType<typeof useScroll>['scrollYProgress']
@@ -31,7 +32,6 @@ const HERO_IMAGE_CLIP_PATH =
 export default function HeroSection() {
   const { content } = useContent()
   const hero = content.hero
-  const heroImageSrc = mediaUrl(hero.image) ?? heroCreacion
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
 
@@ -109,19 +109,30 @@ export default function HeroSection() {
         {hero.subtitle}
       </motion.p>
 
+      {/* initial={false}: this wrapper holds the LCP image, so it must not start
+          hidden/scaled-down — that gates the browser's first paint behind JS
+          bootstrap + animation start (~2.3s elementRenderDelay, measured). All
+          other Hero animations are intentionally left untouched. */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        data-testid="hero-image-wrapper"
+        initial={false}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-[min(760px,88vw)]"
       >
-        <img
-          src={heroImageSrc}
-          alt={hero.imageAlt}
-          draggable={false}
-          className="pointer-events-none block h-[min(38vh,340px)] w-full select-none object-cover"
-          style={{ clipPath: HERO_IMAGE_CLIP_PATH }}
-        />
+        <picture>
+          <source type="image/webp" srcSet="/hero-creacion.webp" />
+          <img
+            src="/hero-creacion.png"
+            alt={hero.imageAlt}
+            width={HERO_IMAGE_WIDTH}
+            height={HERO_IMAGE_HEIGHT}
+            fetchPriority="high"
+            draggable={false}
+            className="pointer-events-none block h-[min(38vh,340px)] w-full select-none object-cover"
+            style={{ clipPath: HERO_IMAGE_CLIP_PATH }}
+          />
+        </picture>
       </motion.div>
 
       <motion.div

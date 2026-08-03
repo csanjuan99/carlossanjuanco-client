@@ -20,7 +20,7 @@ export default function ManifestoSection() {
           text={manifesto.quote}
           className="font-fraunces text-[clamp(24px,3.4vw,40px)] font-medium leading-[1.32]"
         />
-        <div className="mt-9 font-mono text-[11px] tracking-[0.22em] text-ink/55">{manifesto.technique}</div>
+        <div className="mt-9 font-mono text-[11px] tracking-[0.22em] text-ink/70">{manifesto.technique}</div>
       </FadeIn>
     </section>
   )

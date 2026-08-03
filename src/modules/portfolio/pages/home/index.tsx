@@ -1,27 +1,45 @@
-import FrescoDome from '@/shared/components/fresco-dome/FrescoDome'
-import GoldCursor from '@/shared/components/gold-cursor/GoldCursor'
+import { lazy, Suspense } from 'react'
+import { MotionConfig } from 'framer-motion'
 import HeroSection from './sections/hero/HeroSection'
-import ManifestoSection from './sections/manifesto/ManifestoSection'
-import StackSection from './sections/stack/StackSection'
-import ObrasSection from './sections/obras/ObrasSection'
-import FriezeSection from './sections/frieze/FriezeSection'
-import TestimonialsSection from './sections/testimonials/TestimonialsSection'
-import ContactSection from './sections/contact/ContactSection'
-import Footer from './sections/footer/Footer'
+
+// Below-the-fold sections (and the decorative gsap-driven canvas/cursor) are not
+// needed for the initial/LCP-critical paint, so they are code-split out of the
+// main bundle and loaded once the browser is idle-ready, instead of being parsed
+// and executed up front alongside the hero.
+const FrescoDome = lazy(() => import('@/shared/components/fresco-dome/FrescoDome'))
+const GoldCursor = lazy(() => import('@/shared/components/gold-cursor/GoldCursor'))
+const ManifestoSection = lazy(() => import('./sections/manifesto/ManifestoSection'))
+const StackSection = lazy(() => import('./sections/stack/StackSection'))
+const ObrasSection = lazy(() => import('./sections/obras/ObrasSection'))
+const FriezeSection = lazy(() => import('./sections/frieze/FriezeSection'))
+const TestimonialsSection = lazy(() => import('./sections/testimonials/TestimonialsSection'))
+const ContactSection = lazy(() => import('./sections/contact/ContactSection'))
+const Footer = lazy(() => import('./sections/footer/Footer'))
 
 export default function HomePage() {
   return (
-    <div className="relative bg-sky-gradient font-newsreader text-ink">
-      <FrescoDome />
-      <GoldCursor />
-      <HeroSection />
-      <ManifestoSection />
-      <StackSection />
-      <ObrasSection />
-      <FriezeSection />
-      <TestimonialsSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    // reducedMotion="user" makes every framer-motion transform in the page respect the
+    // OS setting, matching what FrescoDome and BlindsReveal already do via the hook.
+    // Opacity still animates, so the reveals degrade to plain fades instead of vanishing.
+    <MotionConfig reducedMotion="user">
+      <div className="relative bg-sky-gradient font-newsreader text-ink">
+        <Suspense fallback={null}>
+          <FrescoDome />
+          <GoldCursor />
+        </Suspense>
+        <main>
+          <HeroSection />
+          <Suspense fallback={null}>
+            <ManifestoSection />
+            <StackSection />
+            <ObrasSection />
+            <FriezeSection />
+            <TestimonialsSection />
+            <ContactSection />
+            <Footer />
+          </Suspense>
+        </main>
+      </div>
+    </MotionConfig>
   )
 }

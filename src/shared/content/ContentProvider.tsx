@@ -37,6 +37,10 @@ interface ContentContextValue {
 const ContentContext = createContext<ContentContextValue | null>(null)
 
 function snapshotFor(locale: SupportedLocale): SiteContent | undefined {
+  // Widen to Partial deliberately: the committed snapshot module guarantees both
+  // locales today, but this lookup is the single source of truth for the
+  // loading/error fallback below, which must handle a locale added to
+  // SupportedLocale before its snapshot data is committed for it.
   return (contentSnapshot as Partial<Record<SupportedLocale, SiteContent>>)[locale]
 }
 
@@ -136,6 +140,10 @@ export function ContentProvider({ children }: { children: ReactNode }) {
     )
   }
 
+  // Not dead code: content is null while status is 'loading' for a locale with
+  // no committed snapshot, before the first fetch resolves. Checking on content
+  // itself (rather than status) lets TypeScript narrow content to non-null below
+  // without an unsafe cast.
   if (!content) return null
 
   return (
