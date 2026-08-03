@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useContent } from '@/shared/content/ContentProvider'
+import { safeMailto } from '@/shared/api/safe-links'
 
 export default function ContactSection() {
   const { content } = useContent()
@@ -25,7 +26,7 @@ export default function ContactSection() {
         </h2>
         <p className="mx-auto mb-14 max-w-[44ch] text-lg leading-relaxed text-ink/70">{contact.subtitle}</p>
         <a
-          href={`mailto:${contact.email}`}
+          href={safeMailto(contact.email)}
           className="inline-flex h-[158px] w-[158px] items-center justify-center rounded-full font-mono text-xs tracking-[0.3em] text-[#3d2413] shadow-2xl transition-transform duration-500 hover:scale-105"
           style={{ background: 'radial-gradient(circle at 36% 30%, #e8cf98, #d4af6a 48%, #a97f3e 82%, #8f4a2e)' }}
         >
