@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html,
 body,
 #root {
@@ -21,4 +15,12 @@ body {
 ::selection {
   background: #d4af6a;
   color: #2b2622;
+}
+
+/* Sienna rather than the gold accent: gold does not reach 3:1 against the sky
+   gradient or the parchment panels, so it would be an invisible focus ring. */
+:focus-visible {
+  outline: 2px solid #7a3d24;
+  outline-offset: 3px;
+  border-radius: 2px;
 }

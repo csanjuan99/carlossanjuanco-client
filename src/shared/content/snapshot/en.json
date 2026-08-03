@@ -1,16 +1,16 @@
 {
   "hero": {
-    "id": 4,
+    "id": 6,
     "documentId": "wnwn49ddvjkb9cwmtbmxv5ie",
-    "eyebrow": "Your Name — Senior FullStack Engineer · MMXXVI",
+    "eyebrow": "Carlos Sanjuan — Senior FullStack Engineer · MMXXVI",
     "titleBefore": "Code as an",
     "titleEmphasis": "act of creation",
     "subtitle": "Ten years sculpting systems that scale — from architecture's first stroke to the interface's last detail.",
     "imageAlt": "Renaissance-fresco-style illustration: a developer and a divine figure whose hands almost touch, evoking the Creation of Adam, surrounded by code and cherubs",
     "scrollHint": "SCROLL · THE VAULT CONTINUES ↓",
     "createdAt": "2026-07-20T20:10:04.988Z",
-    "updatedAt": "2026-07-20T20:10:04.988Z",
-    "publishedAt": "2026-07-20T20:10:04.989Z",
+    "updatedAt": "2026-08-02T18:09:19.604Z",
+    "publishedAt": "2026-08-02T18:09:19.616Z",
     "locale": "en",
     "image": null,
     "localizations": [

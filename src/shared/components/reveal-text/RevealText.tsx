@@ -54,7 +54,17 @@ export default function RevealText({
           <Fragment key={`${word}-${index}`}>
             <span
               className={wordClassName}
-              style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top' }}
+              style={{
+                display: 'inline-block',
+                overflow: 'hidden',
+                verticalAlign: 'top',
+                // The mask must clip vertically (that is the slide-up reveal) but not
+                // horizontally: italic Fraunces overshoots its advance width, so a flush
+                // box shears the terminal of letters like "f". Padding widens the clip
+                // box, the negative margin keeps the word's layout position unchanged.
+                paddingInline: '0.12em',
+                marginInline: '-0.12em',
+              }}
             >
               <motion.span style={{ display: 'inline-block' }} variants={wordVariants}>
                 {word}

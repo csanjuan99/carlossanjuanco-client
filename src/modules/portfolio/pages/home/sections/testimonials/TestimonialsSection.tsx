@@ -1,5 +1,5 @@
 import { useContent } from '@/shared/content/ContentProvider'
-import FadeIn from '@/shared/components/fade-in/FadeIn'
+import TestimonialPlate from './testimonial-plate/TestimonialPlate'
 
 export default function TestimonialsSection() {
   const { content } = useContent()
@@ -13,22 +13,13 @@ export default function TestimonialsSection() {
           {testimonialsSection.title}
         </h2>
       </div>
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-        {testimonials.map((testimonial) => (
-          <FadeIn
-            key={testimonial.documentId}
-            as="figure"
-            y={56}
-            duration={1.2}
-            className="m-0 rounded-sm bg-sky-panel p-10 shadow-xl"
-          >
-            <blockquote className="m-0 mb-6 font-fraunces text-xl font-medium leading-snug text-ink">
-              "{testimonial.quote}"
-            </blockquote>
-            <figcaption className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink/60">
-              {testimonial.author}
-            </figcaption>
-          </FadeIn>
+
+      {/* Perspective belongs to the group, not the card: both plates must share one
+          vanishing point so they read as inscriptions on a single ceiling rather than
+          as two independent flips. */}
+      <div className="grid grid-cols-1 gap-8 [perspective:1400px] sm:grid-cols-2">
+        {testimonials.map((testimonial, index) => (
+          <TestimonialPlate key={testimonial.documentId} testimonial={testimonial} index={index} />
         ))}
       </div>
     </section>

@@ -21,7 +21,7 @@ export default function ObrasSection() {
           className="mx-auto grid min-h-screen max-w-[1240px] grid-cols-1 items-center gap-12 px-6 py-20 md:grid-cols-2 md:gap-16"
         >
           <div>
-            <div className="font-fraunces text-[clamp(64px,9vw,130px)] font-light italic leading-none text-sienna/30">
+            <div className="font-fraunces text-[clamp(64px,9vw,130px)] font-light italic leading-none text-sienna/75">
               {obrasSection.numeralPrefix} {project.numeral}
             </div>
             <h3 className="mb-4 mt-2 font-fraunces text-[clamp(30px,3.6vw,52px)] font-semibold tracking-tight">
@@ -44,9 +44,14 @@ export default function ObrasSection() {
 
             <a
               href={safeUrl(project.link)}
-              className="mt-7 inline-block border-b border-gold pb-1 font-mono text-xs tracking-[0.26em] text-sienna transition-colors hover:text-gold"
+              target="_blank"
+              rel="noopener noreferrer"
+              // Every project repeats the same CTA text, so the accessible name has to
+              // carry the project title for it to mean anything out of context.
+              aria-label={`${obrasSection.cta.replace(/\s*→\s*$/, '')} — ${project.title}`}
+              className="mt-7 inline-flex min-h-11 items-center font-mono text-xs tracking-[0.26em] text-sienna transition-colors hover:text-gold"
             >
-              {obrasSection.cta}
+              <span className="border-b border-gold pb-1">{obrasSection.cta}</span>
             </a>
           </div>
 
@@ -54,7 +59,7 @@ export default function ObrasSection() {
             <div className="rounded-sm bg-gradient-to-br from-gold-light via-gold to-sienna p-4 shadow-2xl">
               <div className="bg-parchment p-2">
                 <BrushWipeImage className="flex h-[clamp(260px,36vw,420px)] w-full items-center justify-center border border-dashed border-sienna/40 bg-parchment-dark">
-                  <span className="px-4 text-center font-mono text-xs tracking-[0.2em] text-sienna/70">
+                  <span className="px-4 text-center font-mono text-xs tracking-[0.2em] text-sienna">
                     {obrasSection.imagePlaceholder}
                   </span>
                 </BrushWipeImage>

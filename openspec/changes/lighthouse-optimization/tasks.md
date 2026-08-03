@@ -188,6 +188,107 @@ Depends on Slices 1-4 being merged.
       (gsap/framer-motion) to cut initial bundle weight, then re-measure
       Performance/LCP.
 
+## Slice 6 — Hero paint gating + code-split + dead-code cleanup (follow-up on verify-report CRITICALs)
+
+Follow-up to close the verify-report CRITICALs: Performance 85→≥95, LCP 3.8s→<2.5s.
+Depends on Slice 5 (measurement tooling) being merged. Hero mount animation
+deferred per user-approved deviation from the strict "animations unchanged"
+scope in `design.md`.
+
+- [x] 6.1 (test) Extend `HeroSection.test.tsx`: assert the hero `<picture>`'s
+      animated wrapper is not gated behind an initial-hidden (`opacity: 0`)
+      mount state. Run `yarn test` — confirm failure (RED).
+- [x] 6.2 Change the hero image's `motion.div` wrapper in `HeroSection.tsx`
+      from `initial={{ opacity: 0, scale: 0.9 }}` to `initial={false}` so the
+      LCP element paints immediately instead of being gated behind JS
+      bootstrap + animation start. All other Hero/page animations left
+      untouched per user approval. Run `yarn test` — confirm 6.1 + full suite
+      green.
+- [x] 6.3 Investigated removing the `if (!content) return null` path in
+      `ContentProvider.tsx` (task 1.6 leftover, flagged WARNING in
+      verify-report). Kept it: it is not actually dead — `content` is
+      genuinely `null` while `status` is `'loading'` for a locale with no
+      committed snapshot before the first fetch resolves, and checking
+      `content` directly (rather than `status`) lets TypeScript narrow
+      `content` to non-null for the `ContentContext.Provider` below without
+      an unsafe cast. Added a comment documenting why it is reachable and
+      required, since the repo's automated pre-commit review correctly
+      flagged an earlier `status`-based + `as SiteContent` cast attempt as
+      fighting the type system. Covered by existing `ContentProvider.test.tsx`
+      suite (8/8 still green, no behavior change).
+- [x] 6.4 Add Vite `build.rollupOptions.output.manualChunks` in
+      `vite.config.ts` splitting `framer-motion`/`gsap` into a separate
+      `vendor-animation` chunk, shrinking the single 489.72 KB initial chunk.
+- [x] 6.5 (test) Add `home/index.lazy.test.tsx`: assert that below-the-fold
+      content (`Footer`, standing in for the whole deferred group) is
+      genuinely withheld from the render until its module resolves, using a
+      manually-controlled dynamic-import promise (a plain synchronous mock,
+      as first attempted in `home/index.test.tsx`, resolves within the same
+      `act()` flush in this test environment and cannot prove deferral — see
+      the note left in `home/index.test.tsx`). Run `yarn test` — confirm
+      failure (RED): the hero renders, but the assertion that `Footer` is
+      absent before resolution fails against the pre-6.6 synchronous
+      implementation.
+- [x] 6.6 Convert `FrescoDome`, `GoldCursor`, and all below-the-fold sections
+      (`ManifestoSection`, `StackSection`, `ObrasSection`, `FriezeSection`,
+      `TestimonialsSection`, `ContactSection`, `Footer`) in
+      `home/index.tsx` to `React.lazy` + `Suspense fallback={null}`, keeping
+      `HeroSection` eager (it owns the LCP element). Run `yarn test` — confirm
+      6.5 + full suite green (48/48; note: React defers invoking a
+      below-the-fold `lazy()` loader until after the initial commit rather
+      than synchronously inside `render()`, so the deterministic test must
+      `waitFor` the module to be requested before resolving it — documented
+      in `index.lazy.test.tsx`). Run `yarn build` — confirm chunk split (main
+      chunk 489.72 KB → 218.88 KB gzip 68.35 KB; below-fold sections split
+      into per-section chunks 1-5 KB each; `vendor-animation` chunk
+      251.73 KB gzip 89.60 KB, loaded in parallel via `modulepreload`).
+- [x] 6.7 Run `yarn measure` (Strapi live) and record results against
+      verify-report's baseline (Performance 85→?, LCP 3817ms→?). Checkbox
+      marks the measurement task as executed and its result honestly
+      documented, not that the ≥95/<2.5s thresholds were hit — see Verdict
+      below: they were not, and the gap is filed as a follow-up per this
+      task's own instruction rather than expanding this change's scope.
+
+      **Result** (local measurement, Strapi live, default Lighthouse mobile
+      throttling): Performance 77-86 across multiple runs post-fix (vs. 85
+      pre-fix — no material net change, within the pre-existing run-to-run
+      noise band of 68-86 documented since Slice 5). LCP 3514-3961ms across
+      runs (vs. 3817ms pre-fix — no material net change). Accessibility 100,
+      Best-Practices 100, SEO 100 — unaffected, still pass.
+
+      **Root cause re-diagnosis after the fix**: the targeted fix worked at
+      the mechanism level — Lighthouse's `lcp-breakdown-insight` (real-trace,
+      unthrottled) now shows `elementRenderDelay` dropped from ~2309ms to
+      ~110ms, confirming the mount-animation gate is closed. However, the
+      Lantern-simulated (throttled) LCP metric used for scoring is dominated
+      by a different, deeper mechanism: this is a pure client-side-rendered
+      (CSR) React SPA with no SSR/prerendering, so under simulated mobile
+      throttling (4x CPU, ~1.5 Mbps/150ms RTT) the browser cannot paint
+      *any* content — including the preloaded, no-longer-motion-gated hero
+      image — until React + the JS module graph needed to mount `HeroSection`
+      (which still directly imports `framer-motion` for its other,
+      intentionally-untouched animations: clouds, text reveals, glow blobs)
+      is fetched and executed. Splitting `framer-motion`/`gsap` into a
+      parallel-loaded `vendor-animation` chunk (task 6.4) and deferring
+      below-the-fold sections (task 6.6) reduced total main-thread/bundle
+      work materially (main chunk 489.72 KB → 218.86 KB gzip 68.32 KB) but
+      did not reduce the *critical-path* bytes needed before first paint,
+      because `HeroSection` — and therefore the hero image nested inside it
+      — still cannot render before `framer-motion` (89.60 KB gzip) loads,
+      since the user-approved scope explicitly keeps Hero's other animations
+      (clouds, text reveals) intact and framer-motion-driven.
+
+      **Verdict**: CRITICALs not closed. Performance and LCP remain below
+      threshold. This is now conclusively a CSR-architecture limitation, not
+      an animation-timing bug — the design's explicit scope boundary ("no
+      framework migration") is the actual blocker. Closing this gap fully
+      would require either (a) removing framer-motion from Hero's critical
+      render path entirely (contradicts the user's explicit "keep the rest
+      of the page's animations untouched" instruction for this batch), or
+      (b) SSR/static prerendering of the initial HTML (a framework
+      migration, explicitly out of scope per `design.md`). Filed as a
+      follow-up recommendation, not expanded into this change's scope.
+
 ---
 
 ## Review Workload Forecast
