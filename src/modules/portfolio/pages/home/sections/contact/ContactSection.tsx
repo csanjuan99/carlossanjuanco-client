@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useContent } from '@/shared/content/ContentProvider'
 import { usePrefersReducedMotion } from '@/shared/hooks/use-prefers-reduced-motion'
+import { safeMailto } from '@/shared/api/safe-links'
 
 const HALO_BACKGROUND =
   'radial-gradient(circle, rgba(212,175,106,.5), rgba(212,175,106,.14) 42%, rgba(212,175,106,0) 68%)'
@@ -44,7 +45,7 @@ export default function ContactSection() {
         </h2>
         <p className="mx-auto mb-14 max-w-[44ch] text-lg leading-relaxed text-ink/70">{contact.subtitle}</p>
         <motion.a
-          href={`mailto:${contact.email}`}
+          href={safeMailto(contact.email)}
           style={
             prefersReducedMotion
               ? { background: SEAL_BACKGROUND }

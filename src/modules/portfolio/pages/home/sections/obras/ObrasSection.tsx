@@ -1,4 +1,5 @@
 import { useContent } from '@/shared/content/ContentProvider'
+import { safeUrl } from '@/shared/api/safe-links'
 import BlindsReveal from '@/shared/components/blinds-reveal/BlindsReveal'
 import BrushWipeImage from '@/shared/components/brush-wipe-image/BrushWipeImage'
 import { formatPlateLabel } from './format-plate-label'
@@ -42,7 +43,7 @@ export default function ObrasSection() {
             </div>
 
             <a
-              href={project.link}
+              href={safeUrl(project.link)}
               target="_blank"
               rel="noopener noreferrer"
               // Every project repeats the same CTA text, so the accessible name has to

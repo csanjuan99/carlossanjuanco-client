@@ -1,4 +1,5 @@
 import { useContent } from '@/shared/content/ContentProvider'
+import { safeMailto, safeUrl } from '@/shared/api/safe-links'
 
 // min-h-11 / px-2 give these 11px labels a 44px touch target without changing how they read.
 const FOOTER_LINK_CLASS =
@@ -13,7 +14,7 @@ export default function Footer() {
       <div className="font-mono text-[11px] tracking-[0.24em] text-ink/70">{siteSetting.copyright}</div>
       <div className="flex gap-5">
         <a
-          href={siteSetting.githubUrl}
+          href={safeUrl(siteSetting.githubUrl)}
           target="_blank"
           rel="noopener noreferrer"
           className={FOOTER_LINK_CLASS}
@@ -21,14 +22,14 @@ export default function Footer() {
           {siteSetting.githubLabel}
         </a>
         <a
-          href={siteSetting.linkedinUrl}
+          href={safeUrl(siteSetting.linkedinUrl)}
           target="_blank"
           rel="noopener noreferrer"
           className={FOOTER_LINK_CLASS}
         >
           {siteSetting.linkedinLabel}
         </a>
-        <a href={`mailto:${siteSetting.email}`} className={FOOTER_LINK_CLASS}>
+        <a href={safeMailto(siteSetting.email)} className={FOOTER_LINK_CLASS}>
           {siteSetting.emailLabel}
         </a>
       </div>
