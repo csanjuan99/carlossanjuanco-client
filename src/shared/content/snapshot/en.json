@@ -1,0 +1,507 @@
+{
+  "hero": {
+    "id": 10,
+    "documentId": "d33hrmwxil76nehnhoq1ts8g",
+    "eyebrow": "Carlos Sanjuan — Full-Stack Software Engineer · MMXXVI",
+    "titleBefore": "Code as an",
+    "titleEmphasis": "act of creation",
+    "subtitle": "Five-plus years building web platforms and mobile apps — from architecture's first stroke to the interface's last detail.",
+    "imageAlt": "Renaissance-fresco-style illustration: a developer and a divine figure whose hands almost touch, evoking the Creation of Adam, surrounded by code and cherubs",
+    "scrollHint": "SCROLL · THE VAULT CONTINUES ↓",
+    "createdAt": "2026-08-03T14:27:57.835Z",
+    "updatedAt": "2026-08-03T14:27:57.835Z",
+    "publishedAt": "2026-08-03T14:27:57.839Z",
+    "locale": "en",
+    "image": null,
+    "localizations": [
+      {
+        "id": 8,
+        "documentId": "d33hrmwxil76nehnhoq1ts8g",
+        "eyebrow": "Carlos Sanjuan — Full-Stack Software Engineer · MMXXVI",
+        "titleBefore": "El código como",
+        "titleEmphasis": "acto de creación",
+        "subtitle": "Más de cinco años construyendo plataformas web y aplicaciones móviles — del primer trazo de la arquitectura al último detalle de la interfaz.",
+        "imageAlt": "Ilustración estilo fresco renacentista: un desarrollador y una figura divina cuyas manos casi se tocan, evocando la Creación de Adán, rodeados de código y querubines",
+        "scrollHint": "DESPLAZA · LA BÓVEDA CONTINÚA ↓",
+        "createdAt": "2026-08-03T14:27:57.811Z",
+        "updatedAt": "2026-08-03T14:27:57.811Z",
+        "publishedAt": "2026-08-03T14:27:57.816Z",
+        "locale": "es"
+      }
+    ]
+  },
+  "manifesto": {
+    "id": 8,
+    "documentId": "cii9nvd4vac2b3m6x28825y5",
+    "label": "MANIFESTO · INSCRIPTION No. 1",
+    "quote": "Full-stack developer focused on web information systems and mobile applications. I have built everything from e-commerce and forms engines to healthcare management systems and school apps, always in agile teams — Scrum, Jira, Figma — with Nest.js, Vue.js, and React Native as my brushes of choice.",
+    "technique": "TECHNIQUE — TYPESCRIPT · NODE.JS · REACT · 5+ YEARS",
+    "createdAt": "2026-08-03T14:27:57.864Z",
+    "updatedAt": "2026-08-03T14:27:57.864Z",
+    "publishedAt": "2026-08-03T14:27:57.866Z",
+    "locale": "en"
+  },
+  "stackSection": {
+    "id": 8,
+    "documentId": "xkqkr5q9cnunnpkxo16ltzc3",
+    "label": "GALLERY II · PANTHEON OF TOOLS",
+    "title": "The tools of the craft",
+    "createdAt": "2026-08-03T14:27:57.885Z",
+    "updatedAt": "2026-08-03T14:27:57.885Z",
+    "publishedAt": "2026-08-03T14:27:57.886Z",
+    "locale": "en"
+  },
+  "obrasSection": {
+    "id": 8,
+    "documentId": "lwr1hqc4wdhqfdft9cyi9m7w",
+    "label": "GALLERY III · CATALOGUE OF WORKS",
+    "title": "Featured works",
+    "numeralPrefix": "No.",
+    "technique": "TECHNIQUE",
+    "role": "ROLE",
+    "year": "YEAR",
+    "result": "RESULT",
+    "cta": "VIEW THE WORK →",
+    "imagePlaceholder": "Project screenshot / mockup — drop your image here",
+    "plateLabel": "WORK No. {{numeral}} · {{year}}",
+    "createdAt": "2026-08-03T14:27:57.905Z",
+    "updatedAt": "2026-08-03T14:27:57.905Z",
+    "publishedAt": "2026-08-03T14:27:57.906Z",
+    "locale": "en"
+  },
+  "friezeSection": {
+    "id": 8,
+    "documentId": "ugpwdunryve5tgvp0qf8xgrv",
+    "label": "GALLERY IV · CHRONOLOGICAL FRIEZE",
+    "title": "Experience",
+    "createdAt": "2026-08-03T14:27:57.921Z",
+    "updatedAt": "2026-08-03T14:27:57.921Z",
+    "publishedAt": "2026-08-03T14:27:57.922Z",
+    "locale": "en"
+  },
+  "testimonialsSection": {
+    "id": 8,
+    "documentId": "r7j3624loste8d7n581nol1u",
+    "label": "GALLERY V · COMMEMORATIVE PLAQUES",
+    "title": "What people say about my work",
+    "createdAt": "2026-08-03T14:27:57.941Z",
+    "updatedAt": "2026-08-03T14:27:57.941Z",
+    "publishedAt": "2026-08-03T14:27:57.943Z",
+    "locale": "en"
+  },
+  "contact": {
+    "id": 8,
+    "documentId": "mntr8zp80qin9adhpl5jzkkm",
+    "label": "EPILOGUE · THE LIGHT ENTERS THROUGH THE DOME",
+    "title": "Let's build the next great work together",
+    "subtitle": "Available for ambitious projects, demanding teams, and problems that deserve their own vault.",
+    "cta": "WRITE TO ME",
+    "email": "hello@carlossanjuan.co",
+    "createdAt": "2026-08-03T14:27:57.967Z",
+    "updatedAt": "2026-08-03T14:27:57.967Z",
+    "publishedAt": "2026-08-03T14:27:57.968Z",
+    "locale": "en"
+  },
+  "siteSetting": {
+    "id": 8,
+    "documentId": "c1jam36lu6bk7zyumkxzd336",
+    "githubUrl": "https://github.com/csanjuan99",
+    "linkedinUrl": "https://www.linkedin.com/in/carlos-sanjuan-311b6b191/",
+    "email": "hello@carlossanjuan.co",
+    "copyright": "© MMXXVI · CARLOS SANJUAN · HANDCRAFTED",
+    "githubLabel": "GITHUB",
+    "linkedinLabel": "LINKEDIN",
+    "emailLabel": "EMAIL",
+    "createdAt": "2026-08-03T14:27:57.986Z",
+    "updatedAt": "2026-08-03T14:27:57.986Z",
+    "publishedAt": "2026-08-03T14:27:57.987Z",
+    "locale": "en"
+  },
+  "projects": [
+    {
+      "id": 16,
+      "documentId": "eigzza16uql900yydo3w8zi7",
+      "numeral": "I",
+      "year": "2025",
+      "order": 0,
+      "stack": "React · Nest.js · AWS Serverless",
+      "link": "#",
+      "title": "Courier SaaS Platform",
+      "description": "SaaS web platform for deliveries and bookings, alongside a mobile app for couriers. Real-time GPS traceability, subscriptions, and an event-driven architecture on AWS Lambda, DynamoDB, AppSync, and EventBridge.",
+      "role": "Senior Full-Stack Engineer",
+      "result": "Cut operational costs by delegating operations to clients",
+      "createdAt": "2026-08-03T14:27:58.011Z",
+      "updatedAt": "2026-08-03T14:27:58.011Z",
+      "publishedAt": "2026-08-03T14:27:58.012Z",
+      "locale": "en",
+      "image": null,
+      "localizations": [
+        {
+          "id": 14,
+          "documentId": "eigzza16uql900yydo3w8zi7",
+          "numeral": "I",
+          "year": "2025",
+          "order": 0,
+          "stack": "React · Nest.js · AWS Serverless",
+          "link": "#",
+          "title": "Plataforma SaaS de Mensajería",
+          "description": "Plataforma web SaaS para la gestión de envíos y reservas, junto a una app móvil para mensajeros. Trazabilidad GPS en tiempo real, suscripciones y arquitectura orientada a eventos sobre AWS Lambda, DynamoDB, AppSync y EventBridge.",
+          "role": "Senior Full-Stack Engineer",
+          "result": "Reducción de costos operativos al delegar la operación a los clientes",
+          "createdAt": "2026-08-03T14:27:57.998Z",
+          "updatedAt": "2026-08-03T14:27:57.998Z",
+          "publishedAt": "2026-08-03T14:27:58.000Z",
+          "locale": "es"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "documentId": "o38zwt3v3uitdq3mm2u2kiz8",
+      "numeral": "II",
+      "year": "2024",
+      "order": 1,
+      "stack": "Nest.js · Nuxt.js · Docker · AWS",
+      "link": "#",
+      "title": "Custom Forms Engine",
+      "description": "Multi-tenant system that stores and manages custom form configurations for in-store data capture, built on a scalable database design serving multiple clients.",
+      "role": "Lead Software Engineer",
+      "result": "Companies generate fully custom forms",
+      "createdAt": "2026-08-03T14:27:58.033Z",
+      "updatedAt": "2026-08-03T14:27:58.033Z",
+      "publishedAt": "2026-08-03T14:27:58.034Z",
+      "locale": "en",
+      "image": null,
+      "localizations": [
+        {
+          "id": 18,
+          "documentId": "o38zwt3v3uitdq3mm2u2kiz8",
+          "numeral": "II",
+          "year": "2024",
+          "order": 1,
+          "stack": "Nest.js · Nuxt.js · Docker · AWS",
+          "link": "#",
+          "title": "Motor de Formularios Personalizados",
+          "description": "Sistema multi-tenant que almacena y gestiona configuraciones de formularios personalizados para la captura de datos en tiendas, sobre un diseño de base de datos escalable para múltiples clientes.",
+          "role": "Lead Software Engineer",
+          "result": "Las empresas generan formularios totalmente a su medida",
+          "createdAt": "2026-08-03T14:27:58.021Z",
+          "updatedAt": "2026-08-03T14:27:58.021Z",
+          "publishedAt": "2026-08-03T14:27:58.023Z",
+          "locale": "es"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "documentId": "jsj6zf9lr554kzc2bp258ez5",
+      "numeral": "III",
+      "year": "2024",
+      "order": 2,
+      "stack": "React Native · Nest.js · MongoDB · AWS",
+      "link": "#",
+      "title": "School Management App",
+      "description": "Multi-tenant mobile app for parents in Aruba schools: courses, attendance, and grades. Included migrating the data model from SQL to NoSQL.",
+      "role": "Lead Engineer",
+      "result": "Improved response times and friendly access for parents",
+      "createdAt": "2026-08-03T14:27:58.056Z",
+      "updatedAt": "2026-08-03T14:27:58.056Z",
+      "publishedAt": "2026-08-03T14:27:58.059Z",
+      "locale": "en",
+      "image": null,
+      "localizations": [
+        {
+          "id": 22,
+          "documentId": "jsj6zf9lr554kzc2bp258ez5",
+          "numeral": "III",
+          "year": "2024",
+          "order": 2,
+          "stack": "React Native · Nest.js · MongoDB · AWS",
+          "link": "#",
+          "title": "App de Gestión Escolar",
+          "description": "Aplicación móvil multi-tenant para padres de familia en colegios de Aruba: cursos, asistencia y calificaciones. Incluyó la migración del modelo de datos de SQL a NoSQL.",
+          "role": "Lead Engineer",
+          "result": "Mejores tiempos de respuesta y acceso amigable para los padres",
+          "createdAt": "2026-08-03T14:27:58.044Z",
+          "updatedAt": "2026-08-03T14:27:58.044Z",
+          "publishedAt": "2026-08-03T14:27:58.046Z",
+          "locale": "es"
+        }
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "id": 20,
+      "documentId": "z7phiqsnpmx7205ljik1urbf",
+      "order": 0,
+      "years": "FEB 2025 — NOW",
+      "company": "Mensajeros Urbanos",
+      "role": "Senior Full-Stack Software Engineer",
+      "feat": "Architectural foundations on AWS serverless, team mentoring, and scalable, resilient APIs; the SaaS platform cut operating costs.",
+      "createdAt": "2026-08-03T14:27:58.085Z",
+      "updatedAt": "2026-08-03T14:27:58.085Z",
+      "publishedAt": "2026-08-03T14:27:58.087Z",
+      "locale": "en"
+    },
+    {
+      "id": 24,
+      "documentId": "qpxytmqcjujkqe4htc2d1qvj",
+      "order": 1,
+      "years": "APR 2024 — JUL 2024",
+      "company": "Lax Tech SAS",
+      "role": "Lead Software Engineer",
+      "feat": "Led two developers building a multi-tenant custom forms system with Nest.js and Nuxt.js, with CI/CD and code reviews.",
+      "createdAt": "2026-08-03T14:27:58.108Z",
+      "updatedAt": "2026-08-03T14:27:58.108Z",
+      "publishedAt": "2026-08-03T14:27:58.110Z",
+      "locale": "en"
+    },
+    {
+      "id": 28,
+      "documentId": "o5kl56bxsn8u0thytjwcn1gk",
+      "order": 2,
+      "years": "JAN 2024 — APR 2024",
+      "company": "Qwihi Solutions",
+      "role": "Lead Software Engineer",
+      "feat": "Multi-tenant school mobile app with React Native and Nest.js, SQL-to-MongoDB migration, and AWS production deploys.",
+      "createdAt": "2026-08-03T14:27:58.129Z",
+      "updatedAt": "2026-08-03T14:27:58.129Z",
+      "publishedAt": "2026-08-03T14:27:58.131Z",
+      "locale": "en"
+    },
+    {
+      "id": 32,
+      "documentId": "y8jc0uvldhrod080ew0p1wlj",
+      "order": 3,
+      "years": "DEC 2022 — DEC 2023",
+      "company": "Lax Tech SAS",
+      "role": "Full-Stack Developer",
+      "feat": "First version of the in-store data-capture system with Nest.js and Nuxt.js, Docker and Kubernetes deploys, and external API integrations.",
+      "createdAt": "2026-08-03T14:27:58.146Z",
+      "updatedAt": "2026-08-03T14:27:58.146Z",
+      "publishedAt": "2026-08-03T14:27:58.147Z",
+      "locale": "en"
+    },
+    {
+      "id": 36,
+      "documentId": "ymh0d24tpy07933pb0onab42",
+      "order": 4,
+      "years": "APR 2022 — DEC 2022",
+      "company": "Infinity Prime SAS",
+      "role": "Full-Stack Developer",
+      "feat": "E-commerce platform with Vue.js and PHP, including payment gateway integration.",
+      "createdAt": "2026-08-03T14:27:58.165Z",
+      "updatedAt": "2026-08-03T14:27:58.165Z",
+      "publishedAt": "2026-08-03T14:27:58.166Z",
+      "locale": "en"
+    },
+    {
+      "id": 40,
+      "documentId": "l1qglgcr9e50xgunk7fzlmqy",
+      "order": 5,
+      "years": "JAN 2020 — JAN 2022",
+      "company": "Tincalab SAS",
+      "role": "Full-Stack Developer",
+      "feat": "Medical appointments system for healthcare providers and a multi-tenant e-commerce with customizable templates, built with Nest.js and Nuxt.js.",
+      "createdAt": "2026-08-03T14:27:58.184Z",
+      "updatedAt": "2026-08-03T14:27:58.184Z",
+      "publishedAt": "2026-08-03T14:27:58.186Z",
+      "locale": "en"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 12,
+      "documentId": "hoowhh0lwmkddz15fymzw51w",
+      "order": 0,
+      "quote": "Recommendation quote: two sentences on what it's like to work with you and the impact you had.",
+      "author": "Name — Title, Company",
+      "createdAt": "2026-08-03T14:27:58.206Z",
+      "updatedAt": "2026-08-03T14:27:58.206Z",
+      "publishedAt": "2026-08-03T14:27:58.207Z",
+      "locale": "en"
+    },
+    {
+      "id": 16,
+      "documentId": "m8tr2lmtejiwgkyw1w2sk8pi",
+      "order": 1,
+      "quote": "Second quote: another voice, ideally a founder or manager, on a concrete result.",
+      "author": "Name — Title, Company",
+      "createdAt": "2026-08-03T14:27:58.221Z",
+      "updatedAt": "2026-08-03T14:27:58.221Z",
+      "publishedAt": "2026-08-03T14:27:58.222Z",
+      "locale": "en"
+    }
+  ],
+  "stackGroups": [
+    {
+      "id": 25,
+      "documentId": "crn26swxv0lw9afnn2kc9set",
+      "name": "FRONTEND",
+      "order": 0,
+      "createdAt": "2026-08-03T14:27:58.244Z",
+      "updatedAt": "2026-08-03T14:27:58.244Z",
+      "publishedAt": "2026-08-03T14:27:58.245Z",
+      "locale": "en",
+      "items": [
+        {
+          "id": 115,
+          "label": "React"
+        },
+        {
+          "id": 116,
+          "label": "React Native"
+        },
+        {
+          "id": 117,
+          "label": "Vue.js / Nuxt.js"
+        },
+        {
+          "id": 118,
+          "label": "TypeScript"
+        },
+        {
+          "id": 119,
+          "label": "Tailwind CSS"
+        }
+      ],
+      "localizations": [
+        {
+          "id": 23,
+          "documentId": "crn26swxv0lw9afnn2kc9set",
+          "name": "FRONTEND",
+          "order": 0,
+          "createdAt": "2026-08-03T14:27:58.231Z",
+          "updatedAt": "2026-08-03T14:27:58.231Z",
+          "publishedAt": "2026-08-03T14:27:58.232Z",
+          "locale": "es"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "documentId": "u1o9di3aaj0h2y8ab81k1qsn",
+      "name": "BACKEND",
+      "order": 1,
+      "createdAt": "2026-08-03T14:27:58.281Z",
+      "updatedAt": "2026-08-03T14:27:58.281Z",
+      "publishedAt": "2026-08-03T14:27:58.282Z",
+      "locale": "en",
+      "items": [
+        {
+          "id": 132,
+          "label": "Nest.js"
+        },
+        {
+          "id": 133,
+          "label": "Node.js"
+        },
+        {
+          "id": 134,
+          "label": "PHP"
+        },
+        {
+          "id": 135,
+          "label": "REST & GraphQL APIs"
+        }
+      ],
+      "localizations": [
+        {
+          "id": 27,
+          "documentId": "u1o9di3aaj0h2y8ab81k1qsn",
+          "name": "BACKEND",
+          "order": 1,
+          "createdAt": "2026-08-03T14:27:58.260Z",
+          "updatedAt": "2026-08-03T14:27:58.260Z",
+          "publishedAt": "2026-08-03T14:27:58.264Z",
+          "locale": "es"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "documentId": "p5dneaar6hoe9zwz1x1wck8p",
+      "name": "INFRA / DEVOPS",
+      "order": 2,
+      "createdAt": "2026-08-03T14:27:58.319Z",
+      "updatedAt": "2026-08-03T14:27:58.319Z",
+      "publishedAt": "2026-08-03T14:27:58.322Z",
+      "locale": "en",
+      "items": [
+        {
+          "id": 151,
+          "label": "AWS (Lambda, DynamoDB, AppSync, EventBridge)"
+        },
+        {
+          "id": 152,
+          "label": "Docker"
+        },
+        {
+          "id": 153,
+          "label": "Kubernetes"
+        },
+        {
+          "id": 154,
+          "label": "GCP"
+        },
+        {
+          "id": 155,
+          "label": "CI/CD"
+        }
+      ],
+      "localizations": [
+        {
+          "id": 31,
+          "documentId": "p5dneaar6hoe9zwz1x1wck8p",
+          "name": "INFRA / DEVOPS",
+          "order": 2,
+          "createdAt": "2026-08-03T14:27:58.302Z",
+          "updatedAt": "2026-08-03T14:27:58.302Z",
+          "publishedAt": "2026-08-03T14:27:58.305Z",
+          "locale": "es"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "documentId": "ka3tqqjgxucc9zdznkp34k5u",
+      "name": "DATA",
+      "order": 3,
+      "createdAt": "2026-08-03T14:27:58.356Z",
+      "updatedAt": "2026-08-03T14:27:58.356Z",
+      "publishedAt": "2026-08-03T14:27:58.357Z",
+      "locale": "en",
+      "items": [
+        {
+          "id": 168,
+          "label": "PostgreSQL"
+        },
+        {
+          "id": 169,
+          "label": "MongoDB"
+        },
+        {
+          "id": 170,
+          "label": "DynamoDB"
+        },
+        {
+          "id": 171,
+          "label": "SQLite"
+        }
+      ],
+      "localizations": [
+        {
+          "id": 35,
+          "documentId": "ka3tqqjgxucc9zdznkp34k5u",
+          "name": "DATA",
+          "order": 3,
+          "createdAt": "2026-08-03T14:27:58.337Z",
+          "updatedAt": "2026-08-03T14:27:58.337Z",
+          "publishedAt": "2026-08-03T14:27:58.340Z",
+          "locale": "es"
+        }
+      ]
+    }
+  ]
+}
