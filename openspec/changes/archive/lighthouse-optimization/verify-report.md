@@ -1,3 +1,13 @@
+# Verify Report: Lighthouse Optimization
+
+**Status**: ARCHIVED — Closed with accepted exception on Performance/LCP thresholds (CSR architectural ceiling)
+
+**Verdict**: FAIL on 2 CRITICAL spec thresholds (Performance 85 < 95, LCP 3.8s > 2.5s), PASS on all other capabilities (A11y 100, BP 100, SEO 100, 19/21 scenarios, 65 tests green).
+
+**User decision** (2026-08-03): Accept the exception and PARK Amendment 1 (build-time prerendering). Archive as closed-with-accepted-exception, not as full pass. Follow-up change to address Performance/LCP filed as recommended action, not part of this change's scope.
+
+---
+
 ```yaml
 schema: gentle-ai.verify-result/v1
 evidence_revision: sha256:bae89f1fce74958e20f59b8e92c5ded58623c97e

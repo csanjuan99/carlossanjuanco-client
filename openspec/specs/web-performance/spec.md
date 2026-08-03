@@ -1,5 +1,7 @@
 # web-performance
 
+**Status**: ACCEPTED EXCEPTION — CSR architectural ceiling prevents meeting the Performance ≥95 and LCP <2.5s scenarios. The remaining scenarios (build-time snapshot, hero image optimization, tests) are fully met. See the section "Accepted Exception Details" below.
+
 ## ADDED Requirements
 
 ### Requirement: Production Lighthouse performance score
@@ -9,6 +11,8 @@ The production build, measured with Lighthouse (mobile emulation) against `yarn 
 - **GIVEN** the project has been built with `yarn build` and served with `yarn preview`
 - **WHEN** Lighthouse (mobile) is run against the preview URL
 - **THEN** the reported Performance category score is ≥ 95
+
+**Note (Accepted Exception)**: Measured Performance score is 85, below the 95 threshold. Root cause: the hero image `<picture>` element is wrapped in a `framer-motion` mount animation (`motion.div` with `initial={{opacity:0, scale:0.9}}`), which gates rendering behind JavaScript bootstrap and animation sequencing. This is a consequence of the design's explicit scope boundary ("no framework migration, component tree and animations unchanged"). See "Accepted Exception Details" section.
 
 #### Scenario: Dev server is never used as the measurement target
 - **GIVEN** a Lighthouse audit is being prepared
@@ -22,6 +26,8 @@ The home page's Largest Contentful Paint (LCP), measured against the production 
 - **GIVEN** the production preview is running and Strapi is reachable
 - **WHEN** Lighthouse measures the home page
 - **THEN** LCP is reported as less than 2.5s
+
+**Note (Accepted Exception)**: Measured LCP is ~3.8s, above the 2.5s threshold. This is the same animation-gated-paint mechanism noted in the Performance scenario above. See "Accepted Exception Details" section.
 
 ### Requirement: Home page renders from a build-time content snapshot
 The home page SHALL paint immediately from a build-time snapshot of site content instead of waiting for a client-side `Promise.all` across all CMS endpoints to resolve, for both the `es` and `en` locales.
@@ -76,3 +82,23 @@ The existing automated test suite SHALL continue to pass after all performance c
 - **GIVEN** all web-performance changes have been implemented
 - **WHEN** `yarn test` is run
 - **THEN** all tests pass (no fewer than the pre-change count) and `yarn build` completes successfully
+
+## Accepted Exception Details
+
+### Two Scenarios Not Met
+1. **Lighthouse Performance Score**: measured 85 (required ≥95)
+2. **LCP Budget**: measured ~3.8s (required <2.5s)
+
+### Root Cause
+The hero image `<picture>` element is wrapped in a `framer-motion` mount animation that gates rendering behind JavaScript parsing, compilation, and animation sequencing. This is the `elementRenderDelay` mechanism identified in the design phase and explicitly preserved in scope ("no framework migration, component tree and animations unchanged").
+
+### Why Accepted
+The user approved this exception after observing the measurement results. The architecture ceiling for CSR (Client-Side Rendering) without framework migration or animation deferral prevents reaching these thresholds within the current design scope. The remaining capabilities (snapshot seeding, hero delivery, SEO metadata, accessibility landmark, all supporting tests) are fully met and provide measurable value.
+
+### Parked Follow-up
+Amendment 1 (build-time prerendering via `react-dom/server` SSR) was approved in the design phase but not shipped in this change, as prerendering alone does not overcome the animation-gating mechanism. The follow-up change should consider:
+- Deferring the hero mount animation (smallest fix, most targeted)
+- Code-splitting the JS bundle to reduce `elementRenderDelay`
+- Combination of both for greater impact
+
+See the verify-report's "Recommendation for the Performance/LCP gap" section for detailed options and tradeoffs.
