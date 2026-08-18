@@ -1,0 +1,38 @@
+# carlossanjuanco-client — static SPA, production only.
+#
+# Stateless: the whole site is baked into the image at build time, including a
+# snapshot of the CMS content. A content change therefore requires a REBUILD,
+# not a restart. Use ./deploy.sh.
+
+name: carlossanjuanco-client
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_STRAPI_URL: ${VITE_STRAPI_URL:-https://content.carlossanjuan.co}
+    image: carlossanjuanco-client:${IMAGE_TAG:-local}
+    container_name: carlossanjuanco-client
+    restart: unless-stopped
+
+    ports:
+      - '${BIND_ADDR:-127.0.0.1}:${HOST_PORT:?HOST_PORT must be set}:8080'
+
+    networks:
+      - edge
+
+    # nginx serving static files sits around 10 MB. Containment only.
+    mem_limit: 128m
+
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+        max-file: '3'
+
+networks:
+  edge:
+    external: true
+    name: edge
